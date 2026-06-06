@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Vickie's Interior | Furniture & Home Décor Uyo</title>
+<meta name="description" content="Browse our gallery of premium interior pieces — office chairs, wall arts, curtains, couches, gold figurines, tables and more. Vickie's Interior, Uyo Akwa Ibom.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #C9A84C; --gold-light: #E8C97A;
+    --dark: #0D0D0D; --border: rgba(201,168,76,0.2);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 24px 70px; display: flex; justify-content: space-between; align-items: center; background: rgba(13,13,13,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #fff; letter-spacing: 2px; text-decoration: none; }
+  .logo span { color: var(--gold); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 40px; }
+  nav ul a { text-decoration: none; color: rgba(255,255,255,0.65); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover, nav ul a.active { color: var(--gold); }
+  .nav-btn { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 10px 28px; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+  .nav-btn:hover { background: var(--gold); color: #fff; }
+
+  /* PAGE HERO */
+  .page-hero { height: 50vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 80px; }
+  .page-hero-bg { position: absolute; inset: 0; background: url('images/bg-gallery.jpg') center/cover no-repeat; background-color: #1a1208; }
+  .page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+  .page-hero-content { position: relative; z-index: 2; text-align: center; }
+  .page-tag { font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); color: #fff; font-weight: 300; }
+  .page-title em { font-style: italic; color: var(--gold-light); }
+
+  /* CATEGORY NAV */
+  .cat-nav { background: #111; padding: 20px 70px; display: flex; gap: 12px; flex-wrap: wrap; position: sticky; top: 80px; z-index: 50; border-bottom: 1px solid var(--border); }
+  .cat-nav-btn { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid var(--border); padding: 8px 20px; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; border-radius: 2px; }
+  .cat-nav-btn:hover, .cat-nav-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  /* OVERVIEW GRID */
+  .overview-section { padding: 100px 70px 0; }
+  .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .overview-card { position: relative; height: 320px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
+  .overview-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; filter: brightness(0.55); }
+  .overview-card:hover img { transform: scale(1.1); filter: brightness(0.8); }
+  .overview-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 24px; transition: background 0.4s; }
+  .overview-card:hover .overview-overlay { background: linear-gradient(to top, rgba(201,168,76,0.5) 0%, rgba(0,0,0,0.3) 100%); }
+  .overview-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+  .overview-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #fff; font-weight: 300; }
+  .overview-arrow { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; color: var(--gold); opacity: 0; transform: translateY(-6px); transition: all 0.4s; }
+  .overview-card:hover .overview-arrow { opacity: 1; transform: translateY(0); }
+
+  /* CATEGORY SECTIONS */
+  .cat-section { padding: 80px 70px; border-top: 1px solid var(--border); }
+  .cat-section-header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: center; }
+  .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #fff; font-weight: 300; }
+  .cat-title em { font-style: italic; color: var(--gold); }
+  .cat-divider { width: 50px; height: 1px; background: var(--gold); margin-top: 16px; }
+  .cat-count-badge { font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+  /* PHOTO GRID */
+  .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .photo-item { overflow: hidden; cursor: pointer; position: relative; height: 260px; background: #1a1a1a; }
+  .photo-item:first-child { height: 340px; }
+  .photo-item:nth-child(5) { height: 340px; }
+  .photo-item:nth-child(9) { height: 340px; }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; filter: brightness(0.85); display: block; }
+  .photo-item:hover img { transform: scale(1.08); filter: brightness(1); }
+  .photo-item::after { content: '🔍'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); font-size: 1.8rem; transition: transform 0.3s; z-index: 2; }
+  .photo-item:hover::after { transform: translate(-50%, -50%) scale(1); }
+
+  /* LOADING SKELETON */
+  .skeleton { background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+  /* EMPTY STATE */
+  .empty-cat { text-align: center; padding: 60px; color: rgba(255,255,255,0.2); grid-column: 1/-1; }
+  .empty-cat p { font-size: 0.82rem; letter-spacing: 2px; }
+
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: none; align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border: 1px solid var(--border); }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; background: none; border: 1px solid var(--border); color: #fff; font-size: 1.2rem; cursor: pointer; padding: 8px 16px; transition: all 0.3s; }
+  .lightbox-close:hover { background: var(--gold); border-color: var(--gold); }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid var(--border); color: #fff; font-size: 1.5rem; padding: 16px 20px; cursor: pointer; transition: all 0.3s; }
+  .lightbox-nav:hover { background: var(--gold); }
+  .lightbox-prev { left: 24px; }
+  .lightbox-next { right: 24px; }
+  .lightbox-caption { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+  /* FOOTER */
+  footer { background: #080808; padding: 60px 70px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); margin-top: 80px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; font-weight: 300; letter-spacing: 2px; }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.9; margin-top: 16px; max-width: 280px; }
+  .footer-col h4 { font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 14px; }
+  .footer-col ul a { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(255,255,255,0.4); transition: color 0.3s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { background: #080808; padding: 20px 70px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 0.68rem; color: rgba(255,255,255,0.2); }
+
+  /* WHATSAPP */
+  .whatsapp-float { position: fixed; bottom: 32px; right: 32px; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(37,211,102,0.35); text-decoration: none; transition: transform 0.3s; }
+  .whatsapp-float:hover { transform: scale(1.12); }
+  .whatsapp-float svg { width: 26px; height: 26px; fill: #fff; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .cat-nav { padding: 16px 24px; top: 70px; }
+    .overview-section { padding: 60px 24px 0; }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-section { padding: 60px 24px; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .photo-item:first-child, .photo-item:nth-child(5), .photo-item:nth-child(9) { height: 200px; }
+    footer { grid-template-columns: 1fr; padding: 60px 24px; }
+    .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a class="whatsapp-float" href="https://wa.me/2347068361078?text=Hello%20Vickie's%20Interior!%20I%20saw%20your%20gallery%20and%20I%20am%20interested." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Vickie's <span>Interior</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn" onclick="window.location.href='index.html#contact'">Get a Quote</button>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-tag">✦ Our Portfolio</p>
+    <h1 class="page-title">Our <em>Gallery</em></h1>
+  </div>
+</section>
+
+<!-- STICKY CATEGORY NAV -->
+<div class="cat-nav">
+  <button class="cat-nav-btn active" data-target="office-chairs" onclick="scrollToCategory('office-chairs', this)">🪑 Office Chairs</button>
+  <button class="cat-nav-btn" data-target="gold-figurines" onclick="scrollToCategory('gold-figurines', this)">✨ Gold Figurines</button>
+  <button class="cat-nav-btn" data-target="tables" onclick="scrollToCategory('tables', this)">🪞 Tables</button>
+  <button class="cat-nav-btn" data-target="wall-arts" onclick="scrollToCategory('wall-arts', this)">🖼️ Wall Arts</button>
+  <button class="cat-nav-btn" data-target="bar-stools" onclick="scrollToCategory('bar-stools', this)">🍸 Bar Stools</button>
+  <button class="cat-nav-btn" data-target="clocks-mirrors" onclick="scrollToCategory('clocks-mirrors', this)">🕐 Clocks & Mirrors</button>
+  <button class="cat-nav-btn" data-target="carpet-rugs" onclick="scrollToCategory('carpet-rugs', this)">🏠 Carpet Rugs</button>
+  <button class="cat-nav-btn" data-target="flowers-vases" onclick="scrollToCategory('flowers-vases', this)">🌸 Flowers & Vases</button>
+  <button class="cat-nav-btn" data-target="curtains" onclick="scrollToCategory('curtains', this)">🪟 Curtains</button>
+  <button class="cat-nav-btn" data-target="couches" onclick="scrollToCategory('couches', this)">🛋️ Couches</button>
+</div>
+
+<!-- OVERVIEW GRID - dynamically updated -->
+<section class="overview-section">
+  <div class="overview-grid" id="overviewGrid">
+    <a href="#office-chairs" class="overview-card"><img src="images/office-chair-1.jpg" alt="Office Chairs" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪑</span><div class="overview-name">Office Chairs</div></div><div class="overview-arrow">→</div></a>
+    <a href="#gold-figurines" class="overview-card"><img src="images/figurines.jpeg" alt="Gold Figurines" loading="lazy"><div class="overview-overlay"><span class="overview-icon">✨</span><div class="overview-name">Gold Figurines</div></div><div class="overview-arrow">→</div></a>
+    <a href="#tables" class="overview-card"><img src="images/table.jpg" alt="Tables" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪞</span><div class="overview-name">Tables</div></div><div class="overview-arrow">→</div></a>
+    <a href="#wall-arts" class="overview-card"><img src="images/wallart-1.jpg" alt="Wall Arts" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🖼️</span><div class="overview-name">Wall Arts</div></div><div class="overview-arrow">→</div></a>
+    <a href="#bar-stools" class="overview-card"><img src="images/bar-stool.jpeg" alt="Bar Stools" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🍸</span><div class="overview-name">Bar Stools</div></div><div class="overview-arrow">→</div></a>
+    <a href="#clocks-mirrors" class="overview-card"><img src="images/clocks-mirrors.jpg" alt="Clocks and Mirrors" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🕐</span><div class="overview-name">Clocks & Mirrors</div></div><div class="overview-arrow">→</div></a>
+    <a href="#carpet-rugs" class="overview-card"><img src="images/carpet.jpg" alt="Carpet Rugs" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🏠</span><div class="overview-name">Carpet Rugs</div></div><div class="overview-arrow">→</div></a>
+    <a href="#flowers-vases" class="overview-card"><img src="images/flower-1.jpg" alt="Flowers and Vases" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🌸</span><div class="overview-name">Flowers & Vases</div></div><div class="overview-arrow">→</div></a>
+    <a href="#curtains" class="overview-card"><img src="images/curtains.jpeg" alt="Curtains" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪟</span><div class="overview-name">Curtains</div></div><div class="overview-arrow">→</div></a>
+    <a href="#couches" class="overview-card"><img src="images/couch.jpeg" alt="Couches" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🛋️</span><div class="overview-name">Couches</div></div><div class="overview-arrow">→</div></a>
+  </div>
+</section>
+
+<!-- OFFICE CHAIRS -->
+<section class="cat-section" id="office-chairs" style="background:rgb(62,23,104);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🪑 Office/Recreational <em>Chairs</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-office-chairs"></span>
+  </div>
+  <div class="photo-grid" id="grid-office-chairs">
+    <!-- Hardcoded fallback images — Firebase images load on top -->
+  </div>
+</section>
+
+<!-- GOLD FIGURINES -->
+<section class="cat-section" id="gold-figurines" style="background:rgb(129,111,8);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">✨ Gold <em>Figurines</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-gold-figurines"></span>
+  </div>
+  <div class="photo-grid" id="grid-gold-figurines">
+
+  </div>
+</section>
+
+<!-- TABLES -->
+<section class="cat-section" id="tables">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🪞 <em>Tables</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-tables"></span>
+  </div>
+  <div class="photo-grid" id="grid-tables">
+  </div>
+</section>
+
+<!-- WALL ARTS -->
+<section class="cat-section" id="wall-arts" style="background:rgb(8,62,129);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🖼️ Wall <em>Arts</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-wall-arts"></span>
+  </div>
+  <div class="photo-grid" id="grid-wall-arts">
+    
+  </div>
+</section>
+
+<!-- BAR STOOLS -->
+<section class="cat-section" id="bar-stools">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🍸 Bar <em>Stools</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-bar-stools"></span>
+  </div>
+  <div class="photo-grid" id="grid-bar-stools">
+  </div>
+</section>
+
+<!-- CLOCKS & MIRRORS -->
+<section class="cat-section" id="clocks-mirrors" style="background:rgb(62,8,129);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🕐 Clocks & <em>Mirrors</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-clocks-mirrors"></span>
+  </div>
+  <div class="photo-grid" id="grid-clocks-mirrors">
+    
+  </div>
+</section>
+
+<!-- CARPET RUGS -->
+<section class="cat-section" id="carpet-rugs">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🏠 Carpet <em>Rugs</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-carpet-rugs"></span>
+  </div>
+  <div class="photo-grid" id="grid-carpet-rugs">
+    <!-- Firebase will populate this -->
+  </div>
+</section>
+
+<!-- FLOWERS & VASES -->
+<section class="cat-section" id="flowers-vases" style="background:rgb(129,8,62);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🌸 Flowers & <em>Vases</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-flowers-vases"></span>
+  </div>
+  <div class="photo-grid" id="grid-flowers-vases">
+    <!-- Firebase will populate this -->
+  </div>
+</section>
+
+<!-- CURTAINS -->
+<section class="cat-section" id="curtains">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🪟 <em>Curtains</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-curtains"></span>
+  </div>
+  <div class="photo-grid" id="grid-curtains">
+    <!-- Firebase will populate this -->
+  </div>
+</section>
+
+<!-- COUCHES -->
+<section class="cat-section" id="couches" style="background:rgb(62,129,8);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🛋️ <em>Couches</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-couches"></span>
+  </div>
+  <div class="photo-grid" id="grid-couches">
+    <!-- Firebase will populate this -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Vickie's <span>Interior</span></div>
+    <p class="footer-desc">Transforming spaces into beautiful, functional environments that reflect your unique personality and style.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pages</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Categories</h4>
+    <ul>
+      <li><a href="#office-chairs">Office Chairs</a></li>
+      <li><a href="#gold-figurines">Gold Figurines</a></li>
+      <li><a href="#tables">Tables</a></li>
+      <li><a href="#wall-arts">Wall Arts</a></li>
+      <li><a href="#curtains">Curtains</a></li>
+      <li><a href="#couches">Couches</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Vickie's Interior. All rights reserved.</span>
+  <span>Built with ❤️ in Akwa Ibom</span>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕ Close</button>
+  <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJVBOoq8rzmP1D_JO9_v-1wMHYOdJ0Auo",
+    authDomain: "vikies-interior.firebaseapp.com",
+    projectId: "vikies-interior",
+    storageBucket: "vikies-interior.firebasestorage.app",
+    messagingSenderId: "812115483821",
+    appId: "1:812115483821:web:a3b262a145713338597a24"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // All categories
+  const categories = [
+    'office-chairs', 'gold-figurines', 'tables', 'wall-arts',
+    'bar-stools', 'clocks-mirrors', 'carpet-rugs', 'flowers-vases',
+    'curtains', 'couches'
+  ];
+
+  // Load all Firebase images and append to existing grids
+  async function loadFirebaseImages() {
+    try {
+      const snapshot = await getDocs(collection(db, 'gallery'));
+
+      if (snapshot.empty) return; // No Firebase images yet — hardcoded ones show fine
+
+      // Group images by category
+      const imagesByCategory = {};
+      categories.forEach(cat => imagesByCategory[cat] = []);
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        if (imagesByCategory[data.category] !== undefined) {
+          imagesByCategory[data.category].push(data);
+        }
+      });
+
+      // For each category — append Firebase images to the grid
+      categories.forEach(cat => {
+        const images = imagesByCategory[cat];
+        if (images.length === 0) return;
+
+        const grid = document.getElementById(`grid-${cat}`);
+        const badge = document.getElementById(`badge-${cat}`);
+
+        if (!grid) return;
+
+        // Add Firebase images to grid
+        images.forEach(img => {
+          const div = document.createElement('div');
+          div.className = 'photo-item firebase-img';
+          div.innerHTML = `<img src="${img.url}" alt="${img.description || cat}" loading="lazy">`;
+          grid.appendChild(div);
+        });
+
+        // Update badge
+        if (badge) {
+          const total = grid.querySelectorAll('.photo-item').length;
+          badge.textContent = total + ' items';
+        }
+
+        // Update overview card with first Firebase image if available
+        updateOverviewCard(cat, images[0].url);
+      });
+
+      // Re-register lightbox for new images
+      registerLightbox();
+
+    } catch (error) {
+      console.log('Firebase load:', error.message);
+      // Hardcoded images still show fine
+    }
+  }
+
+  // Update overview card image with first image from Firebase
+  function updateOverviewCard(cat, imageUrl) {
+    const card = document.querySelector(`a[href="#${cat}"] img`);
+    if (card && imageUrl) card.src = imageUrl;
+  }
+
+  // Count badges for hardcoded images
+  function countHardcodedImages() {
+    categories.forEach(cat => {
+      const grid = document.getElementById(`grid-${cat}`);
+      const badge = document.getElementById(`badge-${cat}`);
+      if (grid && badge) {
+        const count = grid.querySelectorAll('.photo-item').length;
+        if (count > 0) badge.textContent = count + ' items';
+      }
+    });
+  }
+
+  // Load on page start
+  countHardcodedImages();
+  loadFirebaseImages();
+
+  // Lightbox
+  
+  let allImages = [];
+  let currentIndex = 0;
+
+  function registerLightbox() {
+  allImages = [];
+
+  document.querySelectorAll('.photo-item').forEach((item) => {
+    const img = item.querySelector('img');
+
+    if (!img) return;
+
+    allImages.push({
+      src: img.src,
+      caption: img.alt
+    });
+
+    item.onclick = () => {
+      currentIndex = allImages.findIndex(i => i.src === img.src);
+      openLightbox(img.src, img.alt);
+    };
+  });
+}
+
+  registerLightbox();
+
+  window.openLightbox = function(src, caption) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  window.changeImage = function(direction) {
+    currentIndex = (currentIndex + direction + allImages.length) % allImages.length;
+    document.getElementById('lightboxImg').src = allImages[currentIndex].src;
+    document.getElementById('lightboxCaption').textContent = allImages[currentIndex].caption;
+  }
+
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('lightbox')) window.closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (document.getElementById('lightbox').classList.contains('active')) {
+      if (e.key === 'ArrowRight') window.changeImage(1);
+      if (e.key === 'ArrowLeft') window.changeImage(-1);
+      if (e.key === 'Escape') window.closeLightbox();
+    }
+  });
+
+  // Scroll spy
+  const sections = document.querySelectorAll('.cat-section');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 200) current = section.getAttribute('id');
+    });
+    document.querySelectorAll('.cat-nav-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.target === current) btn.classList.add('active');
+    });
+  });
+
+</script>
+
+<script>
+  // Smooth scroll (non-module so onclick works)
+  function scrollToCategory(id, btn) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.cat-nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smart1005.github.io/vickies-interior/sitemap.xml

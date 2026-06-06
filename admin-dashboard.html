@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Vickie's Interior</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --gold: #c9a84c;
+        --dark: #0d0d0d;
+        --card: #111;
+        --border: rgba(201, 168, 76, 0.2);
+        --red: #ef4444;
+      }
+      body {
+        font-family: "Jost", sans-serif;
+        background: #0a0a0a;
+        color: #fff;
+        min-height: 100vh;
+      }
+
+      /* TOP BAR */
+      .topbar {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .topbar-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: #fff;
+      }
+      .topbar-logo span {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .topbar-email {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 1px;
+      }
+      .logout-btn {
+        background: transparent;
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        padding: 8px 20px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .logout-btn:hover {
+        background: rgba(239, 68, 68, 0.1);
+      }
+
+      /* LAYOUT */
+      .dashboard {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: calc(100vh - 65px);
+      }
+
+      /* SIDEBAR */
+      .sidebar {
+        background: var(--card);
+        border-right: 1px solid var(--border);
+        padding: 32px 24px;
+      }
+      .sidebar-title {
+        font-size: 0.62rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .cat-list {
+        list-style: none;
+      }
+      .cat-list li {
+        padding: 12px 16px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all 0.3s;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cat-list li:hover {
+        color: #fff;
+        border-color: var(--border);
+      }
+      .cat-list li.active {
+        color: var(--gold);
+        border-color: var(--gold);
+        background: rgba(201, 168, 76, 0.08);
+      }
+      .cat-count {
+        margin-left: auto;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2px 8px;
+        border-radius: 100px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* MAIN CONTENT */
+      .main {
+        padding: 40px;
+        overflow-y: auto;
+      }
+
+      /* UPLOAD SECTION */
+      .upload-section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 36px;
+        margin-bottom: 40px;
+        border-radius: 4px;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .upload-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        padding: 12px 16px;
+        color: #fff;
+        font-family: "Jost", sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 0.3s;
+        border-radius: 2px;
+      }
+      .form-group select:focus,
+      .form-group input:focus {
+        border-color: var(--gold);
+      }
+      .form-group select option {
+        background: #1a1a1a;
+      }
+
+      /* DRAG DROP AREA */
+      .drop-area {
+        border: 2px dashed var(--border);
+        padding: 48px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .drop-area:hover,
+      .drop-area.dragover {
+        border-color: var(--gold);
+        background: rgba(201, 168, 76, 0.05);
+      }
+      .drop-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .drop-text {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 8px;
+      }
+      .drop-subtext {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.25);
+        letter-spacing: 1px;
+      }
+      .drop-area input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* PREVIEW */
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .preview-item {
+        position: relative;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 3px;
+      }
+      .preview-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .preview-remove {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: rgba(239, 68, 68, 0.8);
+        border: none;
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* PROGRESS */
+      .progress-bar {
+        background: rgba(255, 255, 255, 0.1);
+        height: 4px;
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        display: none;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--gold);
+        width: 0%;
+        transition: width 0.3s;
+      }
+
+      .upload-btn {
+        background: var(--gold);
+        color: #fff;
+        border: none;
+        padding: 14px 40px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 2px;
+      }
+      .upload-btn:hover {
+        background: #d4af5a;
+      }
+      .upload-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* SUCCESS/ERROR MESSAGES */
+      .msg {
+        padding: 12px 16px;
+        font-size: 0.82rem;
+        border-radius: 2px;
+        margin-bottom: 16px;
+        display: none;
+      }
+      .msg.success {
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #22c55e;
+      }
+      .msg.error {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+      }
+
+      /* GALLERY SECTION */
+      .gallery-section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 36px;
+        border-radius: 4px;
+      }
+      .gallery-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      .gallery-item {
+        position: relative;
+        height: 140px;
+        overflow: hidden;
+        border-radius: 3px;
+        background: #1a1a1a;
+        border: 1px solid var(--border);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s;
+      }
+      .gallery-item:hover img {
+        opacity: 0.5;
+      }
+      .gallery-item-actions {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .gallery-item:hover .gallery-item-actions {
+        opacity: 1;
+      }
+      .delete-btn {
+        background: var(--red);
+        border: none;
+        color: #fff;
+        padding: 8px 16px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: background 0.3s;
+      }
+      .delete-btn:hover {
+        background: #dc2626;
+      }
+      .empty-state {
+        text-align: center;
+        padding: 60px;
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.82rem;
+        letter-spacing: 2px;
+      }
+
+      /* STATS */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .stat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 24px;
+        border-radius: 4px;
+      }
+      .stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.5rem;
+        color: var(--gold);
+        font-weight: 300;
+      }
+      .stat-label {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-logo">Vickie's <span>Interior</span> — Admin</div>
+      <div class="topbar-right">
+        <span class="topbar-email" id="userEmail"></span>
+        <a
+          href="index.html"
+          style="
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+          "
+          >View Site</a
+        >
+        <button class="logout-btn" onclick="logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <p class="sidebar-title">Categories</p>
+        <ul class="cat-list" id="catList">
+          <li class="active" onclick="selectCategory('office-chairs', this)">
+            <span>🪑</span> Office Chairs
+            <span class="cat-count" id="count-office-chairs">0</span>
+          </li>
+          <li onclick="selectCategory('gold-figurines', this)">
+            <span>✨</span> Gold Figurines
+            <span class="cat-count" id="count-gold-figurines">0</span>
+          </li>
+          <li onclick="selectCategory('tables', this)">
+            <span>🪞</span> Tables
+            <span class="cat-count" id="count-tables">0</span>
+          </li>
+          <li onclick="selectCategory('wall-arts', this)">
+            <span>🖼️</span> Wall Arts
+            <span class="cat-count" id="count-wall-arts">0</span>
+          </li>
+          <li onclick="selectCategory('bar-stools', this)">
+            <span>🍸</span> Bar Stools
+            <span class="cat-count" id="count-bar-stools">0</span>
+          </li>
+          <li onclick="selectCategory('clocks-mirrors', this)">
+            <span>🕐</span> Clocks & Mirrors
+            <span class="cat-count" id="count-clocks-mirrors">0</span>
+          </li>
+          <li onclick="selectCategory('carpet-rugs', this)">
+            <span>🏠</span> Carpet Rugs
+            <span class="cat-count" id="count-carpet-rugs">0</span>
+          </li>
+          <li onclick="selectCategory('flowers-vases', this)">
+            <span>🌸</span> Flowers & Vases
+            <span class="cat-count" id="count-flowers-vases">0</span>
+          </li>
+          <li onclick="selectCategory('curtains', this)">
+            <span>🪟</span> Curtains
+            <span class="cat-count" id="count-curtains">0</span>
+          </li>
+          <li onclick="selectCategory('couches', this)">
+            <span>🛋️</span> Couches
+            <span class="cat-count" id="count-couches">0</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MAIN -->
+      <div class="main">
+        <!-- STATS -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-num" id="totalImages">0</div>
+            <div class="stat-label">Total Images</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Categories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="currentCatCount">0</div>
+            <div class="stat-label">In This Category</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Storage Free</div>
+          </div>
+        </div>
+
+        <!-- UPLOAD -->
+        <div class="upload-section">
+          <h2 class="section-title">Upload <em>Images</em></h2>
+
+          <div class="upload-grid">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="categorySelect">
+                <option value="office-chairs">🪑 Office Chairs</option>
+                <option value="gold-figurines">✨ Gold Figurines</option>
+                <option value="tables">🪞 Tables</option>
+                <option value="wall-arts">🖼️ Wall Arts</option>
+                <option value="bar-stools">🍸 Bar Stools</option>
+                <option value="clocks-mirrors">🕐 Clocks & Mirrors</option>
+                <option value="carpet-rugs">🏠 Carpet Rugs</option>
+                <option value="flowers-vases">🌸 Flowers & Vases</option>
+                <option value="curtains">🪟 Curtains</option>
+                <option value="couches">🛋️ Couches</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Image Description (optional)</label>
+              <input
+                type="text"
+                id="imageDesc"
+                placeholder="e.g. Gold executive chair"
+              />
+            </div>
+          </div>
+
+          <div class="drop-area" id="dropArea">
+            <span class="drop-icon">📸</span>
+            <p class="drop-text">Drop images here or click to browse</p>
+            <p class="drop-subtext">
+              JPG, PNG, WEBP — Multiple files supported
+            </p>
+            <input type="file" id="fileInput" accept="image/*" multiple />
+          </div>
+
+          <div class="preview-grid" id="previewGrid"></div>
+
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="msg success" id="successMsg"></div>
+          <div class="msg error" id="errorMsg"></div>
+
+          <button class="upload-btn" id="uploadBtn" onclick="uploadImages()">
+            Upload to Gallery
+          </button>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="gallery-section">
+          <div class="gallery-header">
+            <h2 class="section-title" id="galleryTitle">
+              Office <em>Chairs</em>
+            </h2>
+            <span
+              style="
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                color: rgba(255, 255, 255, 0.3);
+                text-transform: uppercase;
+              "
+              >Click image to delete</span
+            >
+          </div>
+          <div class="loading" id="loadingMsg">Loading images...</div>
+          <div class="gallery-grid" id="galleryGrid"></div>
+          <div class="empty-state" id="emptyState" style="display: none">
+            <span class="empty-icon">🖼️</span>
+            <p style="font-size: 0.82rem">No images in this category yet</p>
+            <p
+              style="
+                font-size: 0.72rem;
+                margin-top: 8px;
+                color: rgba(255, 255, 255, 0.2);
+              "
+            >
+              Upload some images above to get started
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        getDocs,
+        deleteDoc,
+        doc,
+        query,
+        where,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCJVBOoq8rzmP1D_JO9_v-1wMHYOdJ0Auo",
+        authDomain: "vikies-interior.firebaseapp.com",
+        projectId: "vikies-interior",
+        storageBucket: "vikies-interior.firebasestorage.app",
+        messagingSenderId: "812115483821",
+        appId: "1:812115483821:web:a3b262a145713338597a24",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // Cloudinary config
+      const CLOUDINARY_URL =
+        "https://api.cloudinary.com/v1_1/dleswy1va/image/upload";
+      const UPLOAD_PRESET = "interior_upload";
+
+      let currentCategory = "office-chairs";
+      let selectedFiles = [];
+
+      // Auth check
+      onAuthStateChanged(auth, (user) => {
+        console.log("Dashboard auth state:", user);
+
+        if (!user) {
+          console.log("NO USER -> redirecting");
+          window.location.replace("admin-login.html");
+        } else {
+          console.log("USER FOUND:", user.email);
+          document.getElementById("userEmail").textContent = user.email;
+          loadCategoryCounts();
+          loadGallery("office-chairs");
+        }
+      });
+
+      // Logout
+      window.logout = async function () {
+        await signOut(auth);
+        window.location.href = "admin-login.html";
+      };
+
+      // Select category
+      window.selectCategory = function (cat, el) {
+        currentCategory = cat;
+        document
+          .querySelectorAll(".cat-list li")
+          .forEach((li) => li.classList.remove("active"));
+        el.classList.add("active");
+        document.getElementById("categorySelect").value = cat;
+
+        // Update gallery title
+        const titles = {
+          "office-chairs": "Office <em>Chairs</em>",
+          "gold-figurines": "Gold <em>Figurines</em>",
+          tables: "<em>Tables</em>",
+          "wall-arts": "Wall <em>Arts</em>",
+          "bar-stools": "Bar <em>Stools</em>",
+          "clocks-mirrors": "Clocks & <em>Mirrors</em>",
+          "carpet-rugs": "Carpet <em>Rugs</em>",
+          "flowers-vases": "Flowers & <em>Vases</em>",
+          curtains: "<em>Curtains</em>",
+          couches: "<em>Couches</em>",
+        };
+        document.getElementById("galleryTitle").innerHTML = titles[cat];
+        loadGallery(cat);
+      };
+
+      // File input and drag drop
+      const fileInput = document.getElementById("fileInput");
+      const dropArea = document.getElementById("dropArea");
+
+      fileInput.addEventListener("change", (e) => handleFiles(e.target.files));
+
+      dropArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragover");
+      });
+      dropArea.addEventListener("dragleave", () =>
+        dropArea.classList.remove("dragover"),
+      );
+      dropArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+        handleFiles(e.dataTransfer.files);
+      });
+
+      function handleFiles(files) {
+        selectedFiles = Array.from(files);
+        const preview = document.getElementById("previewGrid");
+        preview.innerHTML = "";
+        selectedFiles.forEach((file, index) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const div = document.createElement("div");
+            div.className = "preview-item";
+            div.innerHTML = `
+          <img src="${e.target.result}" alt="preview">
+          <button class="preview-remove" onclick="removeFile(${index})">✕</button>
+        `;
+            preview.appendChild(div);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      window.removeFile = function (index) {
+        selectedFiles.splice(index, 1);
+        handleFiles(selectedFiles);
+      };
+
+      // Upload images
+      window.uploadImages = async function () {
+        if (selectedFiles.length === 0) {
+          showMsg("error", "Please select at least one image!");
+          return;
+        }
+
+        const category = document.getElementById("categorySelect").value;
+        const desc = document.getElementById("imageDesc").value;
+        const btn = document.getElementById("uploadBtn");
+        const progressBar = document.getElementById("progressBar");
+        const progressFill = document.getElementById("progressFill");
+
+        btn.disabled = true;
+        btn.textContent = "Uploading...";
+        progressBar.style.display = "block";
+        hideMessages();
+
+        let uploaded = 0;
+
+        for (const file of selectedFiles) {
+          try {
+            // Upload to Cloudinary
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", UPLOAD_PRESET);
+            formData.append("folder", `vickies-interior/${category}`);
+
+            const response = await fetch(CLOUDINARY_URL, {
+              method: "POST",
+              body: formData,
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+              // Save URL to Firestore
+              await addDoc(collection(db, "gallery"), {
+                url: data.secure_url,
+                category: category,
+                description: desc || "",
+                publicId: data.public_id,
+                uploadedAt: new Date(),
+              });
+              uploaded++;
+              const progress = (uploaded / selectedFiles.length) * 100;
+              progressFill.style.width = progress + "%";
+            }
+          } catch (error) {
+            console.error("Upload error:", error);
+          }
+        }
+
+        btn.disabled = false;
+        btn.textContent = "Upload to Gallery";
+        progressBar.style.display = "none";
+        progressFill.style.width = "0%";
+
+        if (uploaded > 0) {
+          showMsg(
+            "success",
+            `✅ ${uploaded} image${uploaded > 1 ? "s" : ""} uploaded successfully!`,
+          );
+          document.getElementById("previewGrid").innerHTML = "";
+          document.getElementById("imageDesc").value = "";
+          selectedFiles = [];
+          fileInput.value = "";
+          loadGallery(category);
+          loadCategoryCounts();
+        } else {
+          showMsg("error", "Upload failed. Please try again.");
+        }
+      };
+
+      // Load gallery
+      async function loadGallery(category) {
+        const grid = document.getElementById("galleryGrid");
+        const loading = document.getElementById("loadingMsg");
+        const empty = document.getElementById("emptyState");
+
+        grid.innerHTML = "";
+        loading.style.display = "block";
+        empty.style.display = "none";
+
+        try {
+          const q = query(
+            collection(db, "gallery"),
+            where("category", "==", category),
+          );
+          const snapshot = await getDocs(q);
+
+          loading.style.display = "none";
+
+          if (snapshot.empty) {
+            empty.style.display = "block";
+            document.getElementById("currentCatCount").textContent = "0";
+            return;
+          }
+
+          document.getElementById("currentCatCount").textContent =
+            snapshot.size;
+
+          snapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            const div = document.createElement("div");
+            div.className = "gallery-item";
+            div.innerHTML = `
+          <img src="${data.url}" alt="${data.description || category}">
+          <div class="gallery-item-actions">
+            <button class="delete-btn" onclick="deleteImage('${docSnap.id}')">🗑 Delete</button>
+          </div>
+        `;
+            grid.appendChild(div);
+          });
+        } catch (error) {
+          loading.style.display = "none";
+          console.error("Error loading gallery:", error);
+        }
+      }
+
+      // Delete image
+      window.deleteImage = async function (docId) {
+        if (!confirm("Are you sure you want to delete this image?")) return;
+        try {
+          await deleteDoc(doc(db, "gallery", docId));
+          loadGallery(currentCategory);
+          loadCategoryCounts();
+        } catch (error) {
+          showMsg("error", "Failed to delete image. Try again.");
+        }
+      };
+
+      // Load category counts
+      async function loadCategoryCounts() {
+        const categories = [
+          "office-chairs",
+          "gold-figurines",
+          "tables",
+          "wall-arts",
+          "bar-stools",
+          "clocks-mirrors",
+          "carpet-rugs",
+          "flowers-vases",
+          "curtains",
+          "couches",
+        ];
+        let total = 0;
+
+        for (const cat of categories) {
+          try {
+            const q = query(
+              collection(db, "gallery"),
+              where("category", "==", cat),
+            );
+            const snapshot = await getDocs(q);
+            const count = snapshot.size;
+            total += count;
+            const el = document.getElementById(`count-${cat}`);
+            if (el) el.textContent = count;
+          } catch (e) {}
+        }
+        document.getElementById("totalImages").textContent = total;
+      }
+
+      // Messages
+      function showMsg(type, text) {
+        const el = document.getElementById(
+          type === "success" ? "successMsg" : "errorMsg",
+        );
+        el.textContent = text;
+        el.style.display = "block";
+        setTimeout(() => {
+          el.style.display = "none";
+        }, 5000);
+      }
+
+      function hideMessages() {
+        document.getElementById("successMsg").style.display = "none";
+        document.getElementById("errorMsg").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
