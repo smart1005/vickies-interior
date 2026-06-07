@@ -120,6 +120,131 @@
     footer { grid-template-columns: 1fr; padding: 60px 24px; }
     .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; }
   }
+  /* MOBILE OVERFLOW FIX */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* MOBILE NAV FIX */
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .nav-btn {
+    display: none;
+  }
+  /* HAMBURGER — hidden on desktop */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-btn { display: none; }
+}
+
+  /* HAMBURGER MENU */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: rgba(13,13,13,0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-quote {
+    background: var(--gold);
+    color: #fff;
+    text-align: center;
+    padding: 14px;
+    letter-spacing: 2px;
+    border: none;
+    margin-top: 8px;
+  }
+
+  /* FIX GRID ON MOBILE */
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px !important;
+  }
+  .photo-item {
+    height: 180px !important;
+  }
+  .photo-item:first-child,
+  .photo-item:nth-child(5),
+  .photo-item:nth-child(9) {
+    height: 180px !important;
+  }
+
+  /* FIX STICKY NAV HEIGHT */
+  .cat-nav {
+    padding: 12px 16px !important;
+    gap: 8px !important;
+    top: 70px !important;
+    max-height: 120px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap !important;
+  }
+  .cat-nav-btn {
+    font-size: 0.6rem !important;
+    padding: 6px 12px !important;
+    white-space: nowrap;
+  }
+
+  /* FIX OVERVIEW GRID */
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .overview-card {
+    height: 200px !important;
+  }
+
+  /* FIX SECTIONS PADDING */
+  .cat-section {
+    padding: 40px 16px !important;
+  }
+  .overview-section {
+    padding: 40px 16px 0 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -132,13 +257,22 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Vickie's <span>Interior</span></a>
+  
+  <!-- Desktop menu -->
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <button class="nav-btn" onclick="window.location.href='index.html#contact'">Get a Quote</button>
+
+  <!-- Hamburger for mobile -->
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- PAGE HERO -->
@@ -151,6 +285,15 @@
   </div>
 </section>
 
+
+<!-- Mobile dropdown menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="index.html#contact" class="mobile-quote">Get a Quote</a>
+</div>
 <!-- STICKY CATEGORY NAV -->
 <div class="cat-nav">
   <button class="cat-nav-btn active" data-target="office-chairs" onclick="scrollToCategory('office-chairs', this)">🪑 Office Chairs</button>
@@ -509,6 +652,18 @@
     document.querySelectorAll('.cat-nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
+  
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+  // Close menu when link clicked
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
 </script>
 
 </body>
