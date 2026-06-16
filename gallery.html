@@ -10,13 +10,13 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --gold: #C9A84C; --gold-light: #E8C97A;
-    --dark: #0D0D0D; --border: rgba(201,168,76,0.2);
+    --dark:#31f05e ; --border: rgba(201,168,76,0.2);
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; }
 
   /* NAV */
-  nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 24px 70px; display: flex; justify-content: space-between; align-items: center; background: rgba(13,13,13,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 24px 70px; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #fff; letter-spacing: 2px; text-decoration: none; }
   .logo span { color: var(--gold); font-style: italic; }
   nav ul { list-style: none; display: flex; gap: 40px; }
@@ -27,8 +27,8 @@
 
   /* PAGE HERO */
   .page-hero { height: 50vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 80px; }
-  .page-hero-bg { position: absolute; inset: 0; background: url('images/bg-gallery.jpg') center/cover no-repeat; background-color: #1a1208; }
-  .page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+  .page-hero-bg { position: absolute; inset: 0; background: url('images/bg-gallery.jpg') center/cover no-repeat; background-color:#1a7830 ; }
+  .page-hero-overlay { position: absolute; inset: 0; background: rgba(113, 107, 107, 0.579); }
   .page-hero-content { position: relative; z-index: 2; text-align: center; }
   .page-tag { font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
   .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); color: #fff; font-weight: 300; }
@@ -62,7 +62,7 @@
 
   /* PHOTO GRID */
   .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  .photo-item { overflow: hidden; cursor: pointer; position: relative; height: 260px; background: #1a1a1a; }
+  .photo-item { overflow: hidden; cursor: pointer; position: relative; height: 260px; background: #145A24; }
   .photo-item:first-child { height: 340px; }
   .photo-item:nth-child(5) { height: 340px; }
   .photo-item:nth-child(9) { height: 340px; }
@@ -72,7 +72,7 @@
   .photo-item:hover::after { transform: translate(-50%, -50%) scale(1); }
 
   /* LOADING SKELETON */
-  .skeleton { background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+  .skeleton { background: linear-gradient(90deg,#145A24 25%,#1C7A35 50%,#145A24 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
   @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
   /* EMPTY STATE */
@@ -276,7 +276,7 @@ html, body {
 </nav>
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section class="page-hero" >
   <div class="page-hero-bg"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
@@ -306,26 +306,28 @@ html, body {
   <button class="cat-nav-btn" data-target="flowers-vases" onclick="scrollToCategory('flowers-vases', this)">🌸 Flowers & Vases</button>
   <button class="cat-nav-btn" data-target="curtains" onclick="scrollToCategory('curtains', this)">🪟 Curtains</button>
   <button class="cat-nav-btn" data-target="couches" onclick="scrollToCategory('couches', this)">🛋️ Couches</button>
+  <button class="cat-nav-btn" data-target="other-accessories" onclick="scrollToCategory('other-accessories', this)">🎁 Other Accessories</button>
 </div>
 
 <!-- OVERVIEW GRID - dynamically updated -->
 <section class="overview-section">
   <div class="overview-grid" id="overviewGrid">
-    <a href="#office-chairs" class="overview-card"><img src="images/office-chair-1.jpg" alt="Office Chairs" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪑</span><div class="overview-name">Office Chairs</div></div><div class="overview-arrow">→</div></a>
-    <a href="#gold-figurines" class="overview-card"><img src="images/figurines.jpeg" alt="Gold Figurines" loading="lazy"><div class="overview-overlay"><span class="overview-icon">✨</span><div class="overview-name">Gold Figurines</div></div><div class="overview-arrow">→</div></a>
-    <a href="#tables" class="overview-card"><img src="images/table.jpg" alt="Tables" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪞</span><div class="overview-name">Tables</div></div><div class="overview-arrow">→</div></a>
-    <a href="#wall-arts" class="overview-card"><img src="images/wallart-1.jpg" alt="Wall Arts" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🖼️</span><div class="overview-name">Wall Arts</div></div><div class="overview-arrow">→</div></a>
-    <a href="#bar-stools" class="overview-card"><img src="images/bar-stool.jpeg" alt="Bar Stools" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🍸</span><div class="overview-name">Bar Stools</div></div><div class="overview-arrow">→</div></a>
-    <a href="#clocks-mirrors" class="overview-card"><img src="images/clocks-mirrors.jpg" alt="Clocks and Mirrors" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🕐</span><div class="overview-name">Clocks & Mirrors</div></div><div class="overview-arrow">→</div></a>
-    <a href="#carpet-rugs" class="overview-card"><img src="images/carpet.jpg" alt="Carpet Rugs" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🏠</span><div class="overview-name">Carpet Rugs</div></div><div class="overview-arrow">→</div></a>
-    <a href="#flowers-vases" class="overview-card"><img src="images/flower-1.jpg" alt="Flowers and Vases" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🌸</span><div class="overview-name">Flowers & Vases</div></div><div class="overview-arrow">→</div></a>
-    <a href="#curtains" class="overview-card"><img src="images/curtains.jpeg" alt="Curtains" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🪟</span><div class="overview-name">Curtains</div></div><div class="overview-arrow">→</div></a>
-    <a href="#couches" class="overview-card"><img src="images/couch.jpeg" alt="Couches" loading="lazy"><div class="overview-overlay"><span class="overview-icon">🛋️</span><div class="overview-name">Couches</div></div><div class="overview-arrow">→</div></a>
+    <a href="#office-chairs" class="overview-card"><img src="images/office-chair-1.jpg" alt="Office Chairs" loading="eager"><div class="overview-overlay"><span class="overview-icon">🪑</span><div class="overview-name">Office Chairs</div></div><div class="overview-arrow">→</div></a>
+    <a href="#gold-figurines" class="overview-card"><img src="images/figurines.jpeg" alt="Gold Figurines" loading="eager"><div class="overview-overlay"><span class="overview-icon">✨</span><div class="overview-name">Gold Figurines</div></div><div class="overview-arrow">→</div></a>
+    <a href="#tables" class="overview-card"><img src="images/table.jpg" alt="Tables" loading="eager"><div class="overview-overlay"><span class="overview-icon">🪞</span><div class="overview-name">Tables</div></div><div class="overview-arrow">→</div></a>
+    <a href="#wall-arts" class="overview-card"><img src="images/wallart-1.jpg" alt="Wall Arts" loading="eager"><div class="overview-overlay"><span class="overview-icon">🖼️</span><div class="overview-name">Wall Arts</div></div><div class="overview-arrow">→</div></a>
+    <a href="#bar-stools" class="overview-card"><img src="images/bar-stool.jpeg" alt="Bar Stools" loading="eager"><div class="overview-overlay"><span class="overview-icon">🍸</span><div class="overview-name">Bar Stools</div></div><div class="overview-arrow">→</div></a>
+    <a href="#clocks-mirrors" class="overview-card"><img src="images/clocks-mirrors.jpg" alt="Clocks and Mirrors" loading="eager"><div class="overview-overlay"><span class="overview-icon">🕐</span><div class="overview-name">Clocks & Mirrors</div></div><div class="overview-arrow">→</div></a>
+    <a href="#carpet-rugs" class="overview-card"><img src="images/carpet.jpg" alt="Carpet Rugs" loading="eager"><div class="overview-overlay"><span class="overview-icon">🏠</span><div class="overview-name">Carpet Rugs</div></div><div class="overview-arrow">→</div></a>
+    <a href="#flowers-vases" class="overview-card"><img src="images/flower-1.jpg" alt="Flowers and Vases" loading="eager"><div class="overview-overlay"><span class="overview-icon">🌸</span><div class="overview-name">Flowers & Vases</div></div><div class="overview-arrow">→</div></a>
+    <a href="#curtains" class="overview-card"><img src="images/curtains.jpeg" alt="Curtains" loading="eager"><div class="overview-overlay"><span class="overview-icon">🪟</span><div class="overview-name">Curtains</div></div><div class="overview-arrow">→</div></a>
+    <a href="#couches" class="overview-card"><img src="images/couch.jpeg" alt="Couches" loading="eager"><div class="overview-overlay"><span class="overview-icon">🛋️</span><div class="overview-name">Couches</div></div><div class="overview-arrow">→</div></a>
+    <a href="#other-accessories" class="overview-card"><img src="images/accessories-1.jpg" alt="Other Accessories" loading="eager"><div class="overview-overlay"><span class="overview-icon">🎁</span><div class="overview-name">Other Accessories</div></div><div class="overview-arrow">→</div></a>
   </div>
 </section>
 
 <!-- OFFICE CHAIRS -->
-<section class="cat-section" id="office-chairs" style="background:rgb(62,23,104);">
+<section class="cat-section" id="office-chairs" style="background:rgb(7, 3, 12);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🪑 Office/Recreational <em>Chairs</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-office-chairs"></span>
@@ -336,7 +338,7 @@ html, body {
 </section>
 
 <!-- GOLD FIGURINES -->
-<section class="cat-section" id="gold-figurines" style="background:rgb(129,111,8);">
+<section class="cat-section" id="gold-figurines" style="background:var(--dark);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">✨ Gold <em>Figurines</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-gold-figurines"></span>
@@ -347,7 +349,7 @@ html, body {
 </section>
 
 <!-- TABLES -->
-<section class="cat-section" id="tables">
+<section class="cat-section" id="tables" style="background:rgb(4, 3, 1);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🪞 <em>Tables</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-tables"></span>
@@ -357,7 +359,7 @@ html, body {
 </section>
 
 <!-- WALL ARTS -->
-<section class="cat-section" id="wall-arts" style="background:rgb(8,62,129);">
+<section class="cat-section" id="wall-arts" style="background: var(--dark);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🖼️ Wall <em>Arts</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-wall-arts"></span>
@@ -368,7 +370,7 @@ html, body {
 </section>
 
 <!-- BAR STOOLS -->
-<section class="cat-section" id="bar-stools">
+<section class="cat-section" id="bar-stools" style="background:rgb(4, 1, 2);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🍸 Bar <em>Stools</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-bar-stools"></span>
@@ -378,7 +380,7 @@ html, body {
 </section>
 
 <!-- CLOCKS & MIRRORS -->
-<section class="cat-section" id="clocks-mirrors" style="background:rgb(62,8,129);">
+<section class="cat-section" id="clocks-mirrors" style="background: var(--dark);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🕐 Clocks & <em>Mirrors</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-clocks-mirrors"></span>
@@ -389,7 +391,7 @@ html, body {
 </section>
 
 <!-- CARPET RUGS -->
-<section class="cat-section" id="carpet-rugs">
+<section class="cat-section" id="carpet-rugs" style="background:rgb(4, 1, 2);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🏠 Carpet <em>Rugs</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-carpet-rugs"></span>
@@ -400,7 +402,7 @@ html, body {
 </section>
 
 <!-- FLOWERS & VASES -->
-<section class="cat-section" id="flowers-vases" style="background:rgb(129,8,62);">
+<section class="cat-section" id="flowers-vases" style="background: var(--dark);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🌸 Flowers & <em>Vases</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-flowers-vases"></span>
@@ -411,7 +413,7 @@ html, body {
 </section>
 
 <!-- CURTAINS -->
-<section class="cat-section" id="curtains">
+<section class="cat-section" id="curtains" style="background: rgb(4, 3, 1);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🪟 <em>Curtains</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-curtains"></span>
@@ -422,12 +424,23 @@ html, body {
 </section>
 
 <!-- COUCHES -->
-<section class="cat-section" id="couches" style="background:rgb(62,129,8);">
+<section class="cat-section" id="couches" style="background: var(--dark);">
   <div class="cat-section-header">
     <div><h2 class="cat-title">🛋️ <em>Couches</em></h2><div class="cat-divider"></div></div>
     <span class="cat-count-badge" id="badge-couches"></span>
   </div>
   <div class="photo-grid" id="grid-couches">
+    <!-- Firebase will populate this -->
+  </div>
+</section>
+
+<!-- OTHER ACCESSORIES -->
+<section class="cat-section" id="other-accessories" style="background: rgb(4,3,1);">
+  <div class="cat-section-header">
+    <div><h2 class="cat-title">🎁 Other <em>Accessories</em></h2><div class="cat-divider"></div></div>
+    <span class="cat-count-badge" id="badge-other-accessories"></span>
+  </div>
+  <div class="photo-grid" id="grid-other-accessories">
     <!-- Firebase will populate this -->
   </div>
 </section>
@@ -456,6 +469,7 @@ html, body {
       <li><a href="#wall-arts">Wall Arts</a></li>
       <li><a href="#curtains">Curtains</a></li>
       <li><a href="#couches">Couches</a></li>
+      <li><a href="#other-accessories">Other Accessories</a></li>
     </ul>
   </div>
 </footer>
@@ -493,7 +507,7 @@ html, body {
   const categories = [
     'office-chairs', 'gold-figurines', 'tables', 'wall-arts',
     'bar-stools', 'clocks-mirrors', 'carpet-rugs', 'flowers-vases',
-    'curtains', 'couches'
+    'curtains', 'couches','other-accessories'
   ];
 
   // Load all Firebase images and append to existing grids
@@ -528,7 +542,7 @@ html, body {
         images.forEach(img => {
           const div = document.createElement('div');
           div.className = 'photo-item firebase-img';
-          div.innerHTML = `<img src="${img.url}" alt="${img.description || cat}" loading="lazy">`;
+          div.innerHTML = `<img src="${img.url}" alt="${img.description || cat} " loading='eager'>`;
           grid.appendChild(div);
         });
 

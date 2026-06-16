@@ -11,8 +11,8 @@
   :root {
     --gold: #C9A84C;
     --gold-light: #E8C97A;
-    --dark: #0D0D0D;
-    --charcoal: #1A1A1A;
+    --dark:#0B5D1E;
+    --charcoal:#0F7A29;
     --cream: #FAF7F2;
     --text: #2A2A2A;
     --grey: #888;
@@ -32,7 +32,7 @@
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 24px 70px;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(13,13,13,0.92);
+    background: rgba(11, 93, 30, 0.92);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
@@ -68,14 +68,16 @@
     position: absolute; inset: 0;
     /* REPLACE WITH YOUR PHOTO */
     background: url('YOUR_HERO_IMAGE_HERE') center/cover no-repeat;
-    background-color: #1a1208;
+    background-color:#0B5D1E;
     transform: scale(1.05);
     transition: transform 8s ease;
   }
   .hero:hover .hero-bg { transform: scale(1); }
   .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(105deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.4) 60%, rgba(13,13,13,0.1) 100%);
+    background: linear-gradient(105deg,rgba(11,93,30,0.85) 0%,
+rgba(14, 175, 52, 0.74) 60%,
+rgba(10, 223, 60, 0.985) 100%);
   }
   .hero-content {
     position: relative; z-index: 2;
@@ -336,7 +338,7 @@
 
   /* FOOTER */
   footer {
-    background: #080808; padding: 60px 70px;
+    background:#0B5D1E; padding: 60px 70px;
     display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
     border-top: 1px solid var(--border);
   }
@@ -362,7 +364,7 @@
   }
   .footer-col ul a:hover { color: var(--gold); }
   .footer-bottom {
-    background: #080808; padding: 20px 70px;
+    background: #0B5D1E; padding: 20px 70px;
     border-top: 1px solid rgba(255,255,255,0.04);
     display: flex; justify-content: space-between;
     font-size: 0.68rem; color: rgba(255,255,255,0.2); letter-spacing: 1px;
@@ -386,7 +388,7 @@
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); }
 
   /* MOBILE MENU */
-  .mobile-menu { position: fixed; top: 65px; left: 0; right: 0; background: rgba(13,13,13,0.98); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 99; display: none; flex-direction: column; }
+  .mobile-menu { position: fixed; top: 65px; left: 0; right: 0; background: rgba(4, 212, 52, 0.98); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 99; display: none; flex-direction: column; }
   .mobile-menu.open { display: flex; }
   .mobile-menu a { text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; padding: 16px 0; border-bottom: 1px solid var(--border); display: block; }
   .mobile-menu a:hover { color: var(--gold); }
@@ -508,7 +510,7 @@
   <div class="services-grid">
     <div class="service-card">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/wallart-1.jpg" alt="Living Spaces">
+      <img src="images/wallart-1.jpg" alt="Living Spaces" loading="eager">
       <div class="service-overlay">
         <div class="service-num">01</div>
         <h3 class="service-name">3D WALL ARTS</h3>
@@ -518,7 +520,7 @@
     </div>
     <div class="service-card">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/living-space-1.jpg" alt="Office Design">
+      <img src="images/living-space-1.jpg" alt="Office Design" loading="eager">
       <div class="service-overlay">
         <div class="service-num">02</div>
         <h3 class="service-name">INTERIOR MAKEOVER</h3>
@@ -528,7 +530,7 @@
     </div>
     <div class="service-card">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/flower-1.jpg" alt="Bedroom Design">
+      <img src="images/flower-1.jpg" alt="Bedroom Design" loading="eager">
       <div class="service-overlay">
         <div class="service-num">03</div>
         <h3 class="service-name"> OUTDOOR DECOR RETREATS</h3>
@@ -552,27 +554,27 @@
   <div class="featured-grid">
     <div class="featured-item">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-6.jpeg" alt="Featured project">
+      <img src="images/featured-6.jpeg" alt="Featured project" loading="eager">
       <div class="featured-label">Living Room Transformation</div>
     </div>
     <div class="featured-item">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-2.jpg" alt="Featured project">
+      <img src="images/featured-2.jpg" alt="Featured project" loading="eager">
       <div class="featured-label">Office Space Design</div>
     </div>
     <div class="featured-item">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-1.jpg" alt="Featured project">
+      <img src="images/featured-1.jpg" alt="Featured project" loading="eager">
       <div class="featured-label">Bedroom Suite</div>
     </div>
     <div class="featured-item">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/feature-3.jpg" alt="Featured project">
+      <img src="images/feature-3.jpg" alt="Featured project" loading="eager">
       <div class="featured-label">Dining Area</div>
     </div>
     <div class="featured-item">
       <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-4.jpg" alt="Featured project">
+      <img src="images/featured-4.jpg" alt="Featured project" loading="eager">
       <div class="featured-label">Home Accessories</div>
     </div>
   </div>
