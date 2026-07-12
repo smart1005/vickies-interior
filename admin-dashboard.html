@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard — Vickie's Interior</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -231,7 +232,7 @@
         <div class="stat-label">Total Images</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">10</div>
+        <div class="stat-num">11</div>
         <div class="stat-label">Categories</div>
       </div>
       <div class="stat-card">
@@ -332,6 +333,13 @@
   const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dleswy1va/image/upload";
   const UPLOAD_PRESET = "interior_upload";
 
+  // Turns a raw Cloudinary URL into a small, auto-compressed thumbnail for the admin preview grid only.
+  // The full-size original URL is still what's saved to Firestore and shown on the live gallery.
+  function thumbUrl(url) {
+    if (!url || !url.includes('/upload/')) return url;
+    return url.replace('/upload/', '/upload/f_auto,q_auto,w_300/');
+  }
+
   let currentCategory = 'office-chairs';
   let selectedFiles = [];
 
@@ -370,7 +378,8 @@
       'carpet-rugs': 'Carpet <em>Rugs</em>',
       'flowers-vases': 'Flowers & <em>Vases</em>',
       'curtains': '<em>Curtains</em>',
-      'couches': '<em>Couches</em>'
+      'couches': '<em>Couches</em>',
+      'other-accessories': 'Other <em>Accessories</em>'
     };
     document.getElementById('galleryTitle').innerHTML = titles[cat];
     loadGallery(cat);
@@ -510,7 +519,7 @@
         const div = document.createElement('div');
         div.className = 'gallery-item';
         div.innerHTML = `
-          <img src="${data.url}" alt="${data.description || category}">
+          <img src="${thumbUrl(data.url)}" alt="${data.description || category}" loading="lazy">
           <div class="gallery-item-actions">
             <button class="delete-btn" onclick="deleteImage('${docSnap.id}')">🗑 Delete</button>
           </div>
@@ -525,6 +534,10 @@
   }
 
   // Delete image
+  // NOTE: this currently only removes the Firestore record, not the actual file in
+  // Cloudinary storage. Deleting from Cloudinary needs the API secret, which can't
+  // safely live in browser JS — that part needs a small Firebase Cloud Function to
+  // do the delete server-side. Planned as a follow-up right after launch.
   window.deleteImage = async function(docId) {
     if (!confirm('Are you sure you want to delete this image?')) return;
     try {
@@ -538,7 +551,7 @@
 
   // Load category counts
   async function loadCategoryCounts() {
-    const categories = ['office-chairs','gold-figurines','tables','wall-arts','bar-stools','clocks-mirrors','carpet-rugs','flowers-vases','curtains','couches'];
+    const categories = ['office-chairs','gold-figurines','tables','wall-arts','bar-stools','clocks-mirrors','carpet-rugs','flowers-vases','curtains','couches','other-accessories'];
     let total = 0;
 
     for (const cat of categories) {

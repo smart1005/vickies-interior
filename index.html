@@ -1,731 +1,1756 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vickie's Interior — Luxury Interior Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <head>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeGoodsStore",
+        "name": "Vickie's Interior",
+        "image": "https://vikies-interior.web.app/images/vickies-featured.jpeg",
+        "@id": "https://vikies-interior.web.app",
+        "url": "https://vikies-interior.web.app",
+        "telephone": "+2347068361078",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "80 Oron Rd",
+          "addressLocality": "Uyo",
+          "addressRegion": "Akwa Ibom",
+          "postalCode": "520102",
+          "addressCountry": "NG"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 5.019254,
+          "longitude": 7.933117
+        },
+        "openingHour gsSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61590729208581",
+          "https://www.instagram.com/vickiesinterior"
+          "https;//wa.me/2347068361078"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "3"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": "Blessing A.",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+            "reviewBody": "Vickie completely transformed my living room. Her eye for detail and taste is extraordinary."
+          },
+          {
+            "@type": "Review",
+            "author": "Emeka O.",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+            "reviewBody": "Our office looks like something out of a magazine. Best investment we ever made for our business."
+          },
+          {
+            "@type": "Review",
+            "author": "Chidinma K.",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+            "reviewBody": "Professional, creative, and delivers on time. Turned my house into the dream home I imagined."
+          }
+        ]
+      }
+    </script>
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --dark:#0B5D1E;
-    --charcoal:#0F7A29;
-    --cream: #FAF7F2;
-    --text: #2A2A2A;
-    --grey: #888;
-    --border: rgba(201,168,76,0.2);
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vickie's Interior — Luxury Interior Design</title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Vickie's Interior — Luxury Interior Design in Uyo"
+    />
+    <meta
+      property="og:description"
+      content="Transforming ordinary spaces into extraordinary living experiences. Furniture, décor and full interior design services in Akwa Ibom State."
+    />
+    <meta
+      property="og:image"
+      content="https://vikies-interior.web.app/images/living-space-1.jpg"
+    />
+    <meta property="og:url" content="https://vikies-interior.web.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="google-site-verification"
+      content="4ClusW-adq8IIGWnBVd_m0m6I6D2j04jNIM21FhQxcA"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="images/living-space-1.jpg" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
+      :root {
+        --gold: #c9a84c;
+        --gold-light: #e8c97a;
+        --dark: #15110d; /* was green — now matches the gallery page palette */
+        --charcoal: #1d1712; /* was green — elevated dark tone */
+        --cream: #faf7f2;
+        --text: #2a2a2a;
+        --grey: #888;
+        --border: rgba(201, 168, 76, 0.2);
+      }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 24px 70px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(11, 93, 30, 0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-weight: 600;
-    color: #fff; letter-spacing: 2px;
-  }
-  .logo span { color: var(--gold); font-style: italic; }
-  nav ul { list-style: none; display: flex; gap: 40px; }
-  nav ul a {
-    text-decoration: none; color: rgba(255,255,255,0.65);
-    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 400; transition: color 0.3s;
-  }
-  nav ul a:hover, nav ul a.active { color: var(--gold); }
-  .nav-btn {
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 10px 28px; font-family: 'Jost', sans-serif;
-    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s;
-  }
-  .nav-btn:hover { background: var(--gold); color: #fff; }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Jost", sans-serif;
+        background: var(--cream);
+        color: var(--text);
+        overflow-x: hidden;
+      }
 
-  /* HERO */
-  .hero {
-    height: 100vh; position: relative;
-    display: flex; align-items: center;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    /* REPLACE WITH YOUR PHOTO */
-    background: url('YOUR_HERO_IMAGE_HERE') center/cover no-repeat;
-    background-color:#0B5D1E;
-    transform: scale(1.05);
-    transition: transform 8s ease;
-  }
-  .hero:hover .hero-bg { transform: scale(1); }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(105deg,rgba(11,93,30,0.85) 0%,
-rgba(14, 175, 52, 0.74) 60%,
-rgba(10, 223, 60, 0.985) 100%);
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    padding: 0 70px; max-width: 700px;
-  }
-  .hero-tag {
-    font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
-  }
-  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 7vw, 7rem);
-    color: #fff; line-height: 1.0;
-    font-weight: 300; letter-spacing: -1px;
-    margin-bottom: 28px;
-  }
-  .hero-title em { font-style: italic; color: var(--gold-light); }
-  .hero-desc {
-    font-size: 1rem; color: rgba(255,255,255,0.65);
-    line-height: 1.9; max-width: 480px;
-    margin-bottom: 52px; font-weight: 300;
-  }
-  .hero-btns { display: flex; gap: 16px; }
-  .btn-gold {
-    background: var(--gold); color: #fff; border: none;
-    padding: 16px 40px; font-family: 'Jost', sans-serif;
-    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s;
-  }
-  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent; color: #fff;
-    border: 1px solid rgba(255,255,255,0.4);
-    padding: 16px 40px; font-family: 'Jost', sans-serif;
-    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        padding: 24px 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(21, 17, 13, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+      }
+      .logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 2px;
+      }
+      .logo span {
+        color: var(--gold);
+        font-style: italic;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+      }
+      nav ul a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 400;
+        transition: color 0.3s;
+      }
+      nav ul a:hover,
+      nav ul a.active {
+        color: var(--gold);
+      }
+      .nav-btn {
+        background: transparent;
+        color: var(--gold);
+        border: 1px solid var(--gold);
+        padding: 10px 28px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .nav-btn:hover {
+        background: var(--gold);
+        color: #fff;
+      }
 
-  .hero-scroll {
-    position: absolute; bottom: 40px; left: 50%;
-    transform: translateX(-50%); z-index: 2;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-  .hero-scroll::after {
-    content: ''; width: 1px; height: 50px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollLine 2s ease infinite;
-  }
-  @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+      /* HERO */
+      .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #1c1712,
+          #0c0a08
+        ); /* fallback while/if the 3D layer can't load */
+      }
+      #hero-canvas {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          105deg,
+          rgba(21, 17, 13, 0.88) 0%,
+          rgba(21, 17, 13, 0.55) 55%,
+          rgba(21, 17, 13, 0.35) 100%
+        );
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 70px;
+        max-width: 700px;
+      }
+      .hero-tag {
+        font-size: 0.62rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-tag::before {
+        content: "";
+        width: 40px;
+        height: 1px;
+        background: var(--gold);
+      }
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3.5rem, 7vw, 7rem);
+        color: #fff;
+        line-height: 1;
+        font-weight: 300;
+        letter-spacing: -1px;
+        margin-bottom: 28px;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--gold-light);
+      }
+      .hero-desc {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.9;
+        max-width: 480px;
+        margin-bottom: 52px;
+        font-weight: 300;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 16px;
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: #fff;
+        border: none;
+        padding: 16px 40px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-gold:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 16px 40px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-outline:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
 
-  /* STATS */
-  .stats {
-    background: var(--dark);
-    display: grid; grid-template-columns: repeat(4, 1fr);
-  }
-  .stat {
-    padding: 52px 40px; text-align: center;
-    border-right: 1px solid var(--border);
-    transition: background 0.3s;
-  }
-  .stat:last-child { border-right: none; }
-  .stat:hover { background: rgba(201,168,76,0.08); }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem; color: var(--gold); font-weight: 300;
-  }
-  .stat-label {
-    font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-top: 8px;
-  }
+      .hero-scroll {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      .hero-scroll::after {
+        content: "";
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+        animation: scrollLine 2s ease infinite;
+      }
+      @keyframes scrollLine {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+        }
+        50% {
+          transform: scaleY(1);
+          transform-origin: top;
+        }
+        51% {
+          transform-origin: bottom;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+        }
+      }
 
-  /* SERVICES PREVIEW */
-  .services { padding: 120px 70px; background: var(--cream); }
-  .section-header { margin-bottom: 70px; }
-  .section-tag {
-    font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    color: var(--dark); line-height: 1.1; font-weight: 300;
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-  .divider { width: 50px; height: 1px; background: var(--gold); margin-top: 24px; }
+      /* STATS */
+      .stats {
+        background: var(--dark);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stat {
+        padding: 52px 40px;
+        text-align: center;
+        border-right: 1px solid var(--border);
+        transition: background 0.3s;
+      }
+      .stat:last-child {
+        border-right: none;
+      }
+      .stat:hover {
+        background: rgba(201, 168, 76, 0.08);
+      }
+      .stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3rem;
+        color: var(--gold);
+        font-weight: 300;
+      }
+      .stat-label {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
+      }
 
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
-  }
-  .service-card {
-    position: relative; height: 420px; overflow: hidden; cursor: pointer;
-  }
-  .service-card img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.8s ease; filter: brightness(0.6);
-  }
-  .service-card:hover img { transform: scale(1.08); filter: brightness(0.8); }
-  .service-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
-    padding: 36px 32px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-  }
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; color: rgba(201,168,76,0.2);
-    font-weight: 300; line-height: 1; margin-bottom: 8px;
-  }
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; color: #fff; font-weight: 300;
-    margin-bottom: 8px;
-  }
-  .service-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
-  .service-arrow {
-    position: absolute; top: 24px; right: 24px;
-    width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.4);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gold); font-size: 1.2rem;
-    opacity: 0; transform: translateY(-8px); transition: all 0.4s;
-  }
-  .service-card:hover .service-arrow { opacity: 1; transform: translateY(0); }
+      /* SERVICES PREVIEW */
+      .services {
+        padding: 120px 70px;
+        background: var(--cream);
+      }
+      .section-header {
+        margin-bottom: 70px;
+      }
+      .section-tag {
+        font-size: 0.62rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        color: var(--dark);
+        line-height: 1.1;
+        font-weight: 300;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .divider {
+        width: 50px;
+        height: 1px;
+        background: var(--gold);
+        margin-top: 24px;
+      }
 
-  /* FEATURED WORK */
-  .featured { padding: 0 0 120px; background: var(--cream); }
-  .featured-header { padding: 0 70px 60px; display: flex; justify-content: space-between; align-items: flex-end; }
-  .featured-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    grid-template-rows: 320px 320px;
-    gap: 4px;
-  }
-  .featured-item {
-    overflow: hidden; position: relative; cursor: pointer;
-  }
-  .featured-item:first-child { grid-row: 1 / 3; }
-  .featured-item img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.7s ease; filter: brightness(0.8);
-  }
-  .featured-item:hover img { transform: scale(1.06); filter: brightness(1); }
-  .featured-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 20px 24px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: #fff; font-style: italic;
-    transform: translateY(100%); transition: transform 0.4s;
-  }
-  .featured-item:hover .featured-label { transform: translateY(0); }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+        perspective: 1200px;
+      }
+      .service-card {
+        position: relative;
+        height: 420px;
+        overflow: hidden;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 0.15s ease-out;
+        will-change: transform;
+      }
+      .service-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.8s ease,
+          filter 0.8s ease;
+        filter: brightness(0.6);
+      }
+      .service-card:hover img {
+        transform: scale(1.08);
+        filter: brightness(0.8);
+      }
+      .service-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          transparent 50%
+        );
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .service-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 4rem;
+        color: rgba(201, 168, 76, 0.2);
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .service-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        color: #fff;
+        font-weight: 300;
+        margin-bottom: 8px;
+      }
+      .service-desc {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.6;
+      }
+      .service-arrow {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: all 0.4s;
+      }
+      .service-card:hover .service-arrow {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  /* PROCESS */
-  .process { background: var(--dark); padding: 120px 70px; }
-  .process .section-title { color: #fff; }
-  .process-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-    margin-top: 70px;
-  }
-  .process-step {
-    padding: 52px 36px;
-    border: 1px solid var(--border);
-    transition: background 0.3s, border-color 0.3s;
-    position: relative;
-  }
-  .process-step:hover { background: rgba(201,168,76,0.06); border-color: var(--gold); }
-  .process-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; color: rgba(201,168,76,0.15);
-    font-weight: 300; line-height: 1; margin-bottom: 20px;
-  }
-  .process-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; color: #fff; margin-bottom: 16px; font-weight: 300;
-  }
-  .process-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.8; }
+      /* FEATURED WORK */
+      .featured {
+        padding: 0 0 120px;
+        background: var(--cream);
+      }
+      .featured-header {
+        padding: 0 70px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .featured-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-rows: 320px 320px;
+        gap: 4px;
+        perspective: 1200px;
+      }
+      .featured-item {
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 0.15s ease-out;
+        will-change: transform;
+      }
+      .featured-item:first-child {
+        grid-row: 1 / 3;
+      }
+      .featured-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s ease,
+          filter 0.7s ease;
+        filter: brightness(0.8);
+      }
+      .featured-item:hover img {
+        transform: scale(1.06);
+        filter: brightness(1);
+      }
+      .featured-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 24px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          transparent 100%
+        );
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: #fff;
+        font-style: italic;
+        transform: translateY(100%);
+        transition: transform 0.4s;
+      }
+      .featured-item:hover .featured-label {
+        transform: translateY(0);
+      }
+      .featured-dots {
+        display: none;
+      }
 
-  /* TESTIMONIALS */
-  .testimonials { padding: 120px 70px; background: url('images/vickies-featured.jpeg'); }
-  .testi-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-    margin-top: 70px;
-  }
-  .testi-card {
-    background: #fff; padding: 48px 36px;
-    border-left: 2px solid var(--gold);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
-  .testi-stars { color: var(--gold); letter-spacing: 3px; margin-bottom: 20px; }
-  .testi-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-style: italic;
-    color: var(--text); line-height: 1.8; margin-bottom: 28px;
-  }
-  .testi-name {
-    font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); font-weight: 500;
-  }
+      /* PROCESS */
+      .process {
+        background: var(--dark);
+        padding: 120px 70px;
+      }
+      .process .section-title {
+        color: #fff;
+      }
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        margin-top: 70px;
+      }
+      .process-step {
+        padding: 52px 36px;
+        border: 1px solid var(--border);
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+        position: relative;
+      }
+      .process-step:hover {
+        background: rgba(201, 168, 76, 0.06);
+        border-color: var(--gold);
+      }
+      .process-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 4rem;
+        color: rgba(201, 168, 76, 0.15);
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+      .process-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        color: #fff;
+        margin-bottom: 16px;
+        font-weight: 300;
+      }
+      .process-desc {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.8;
+      }
 
-  /* CONTACT */
-  .contact { background: var(--dark); padding: 120px 70px; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-  .contact-info .section-title { color: #fff; margin-bottom: 40px; }
-  .contact-detail { margin-bottom: 32px; }
-  .contact-label {
-    font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 10px;
-  }
-  .contact-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.7;
-  }
-  .contact-socials { display: flex; gap: 16px; margin-top: 40px; }
-  .social-btn {
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--border);
-    padding: 10px 24px; font-family: 'Jost', sans-serif;
-    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s; text-decoration: none;
-    display: inline-block;
-  }
-  .social-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+      /* TESTIMONIALS */
+      .testimonials {
+        padding: 120px 70px;
+        background: var(--charcoal) url("images/vickies-featured.jpeg")
+          center/cover no-repeat;
+        background-blend-mode: multiply;
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 70px;
+      }
+      .testi-card {
+        background: #fff;
+        padding: 48px 36px;
+        border-left: 2px solid var(--gold);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .testi-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      }
+      .testi-stars {
+        color: var(--gold);
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+      }
+      .testi-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 28px;
+      }
+      .testi-name {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 500;
+      }
 
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    padding: 16px 20px; color: #fff;
-    font-family: 'Jost', sans-serif; font-size: 0.85rem;
-    outline: none; transition: border-color 0.3s;
-    width: 100%;
-  }
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .contact-form input:focus,
-  .contact-form select:focus,
-  .contact-form textarea:focus { border-color: var(--gold); }
-  .contact-form select option { background: var(--charcoal); color: #fff; }
-  .contact-form textarea { resize: none; height: 120px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .contact-submit {
-    background: var(--gold); color: #fff; border: none;
-    padding: 18px; font-family: 'Jost', sans-serif;
-    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s;
-  }
-  .contact-submit:hover { background: var(--gold-light); }
+      /* CONTACT */
+      .contact {
+        background: var(--dark);
+        padding: 120px 70px;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+      .contact-info .section-title {
+        color: #fff;
+        margin-bottom: 40px;
+      }
+      .contact-detail {
+        margin-bottom: 32px;
+      }
+      .contact-label {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .contact-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.7;
+      }
+      .contact-socials {
+        display: flex;
+        gap: 16px;
+        margin-top: 40px;
+      }
+      .social-btn {
+        background: transparent;
+        color: var(--gold);
+        border: 1px solid var(--border);
+        padding: 10px 24px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .social-btn:hover {
+        background: var(--gold);
+        color: #fff;
+        border-color: var(--gold);
+      }
 
-  /* MAP */
-  .map-section { height: 450px; }
-  .map-section iframe { width: 100%; height: 100%; border: 0; }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        padding: 16px 20px;
+        color: #fff;
+        font-family: "Jost", sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 0.3s;
+        width: 100%;
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .contact-form input:focus,
+      .contact-form select:focus,
+      .contact-form textarea:focus {
+        border-color: var(--gold);
+      }
+      .contact-form select option {
+        background: var(--charcoal);
+        color: #fff;
+      }
+      .contact-form textarea {
+        resize: none;
+        height: 120px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .contact-submit {
+        background: var(--gold);
+        color: #fff;
+        border: none;
+        padding: 18px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .contact-submit:hover {
+        background: var(--gold-light);
+      }
 
-  /* FOOTER */
-  footer {
-    background:#0B5D1E; padding: 60px 70px;
-    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
-    border-top: 1px solid var(--border);
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; color: #fff; font-weight: 300; letter-spacing: 2px;
-  }
-  .footer-logo span { color: var(--gold); font-style: italic; }
-  .footer-desc {
-    font-size: 0.85rem; color: rgba(255,255,255,0.35);
-    line-height: 1.9; margin-top: 16px; max-width: 280px;
-  }
-  .footer-col h4 {
-    font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 28px;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 14px; }
-  .footer-col ul a {
-    text-decoration: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; color: rgba(255,255,255,0.4); transition: color 0.3s;
-  }
-  .footer-col ul a:hover { color: var(--gold); }
-  .footer-bottom {
-    background: #0B5D1E; padding: 20px 70px;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    display: flex; justify-content: space-between;
-    font-size: 0.68rem; color: rgba(255,255,255,0.2); letter-spacing: 1px;
-  }
+      /* MAP */
+      .map-section {
+        height: 450px;
+      }
+      .map-section iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
 
-  /* FLOATING WHATSAPP */
-  .whatsapp-float {
-    position: fixed; bottom: 32px; right: 32px; z-index: 999;
-    width: 56px; height: 56px; background: #25D366;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
-    cursor: pointer; transition: all 0.3s; text-decoration: none;
-    animation: floatWA 3s ease-in-out infinite;
-  }
-  .whatsapp-float:hover { transform: scale(1.12); }
-  @keyframes floatWA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-  .whatsapp-float svg { width: 26px; height: 26px; fill: #fff; }
+      /* FOOTER */
+      footer {
+        background: var(--dark);
+        padding: 60px 70px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        border-top: 1px solid var(--border);
+      }
+      .footer-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        color: #fff;
+        font-weight: 300;
+        letter-spacing: 2px;
+      }
+      .footer-logo span {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .footer-desc {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.35);
+        line-height: 1.9;
+        margin-top: 16px;
+        max-width: 280px;
+      }
+      .footer-col h4 {
+        font-size: 0.62rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 28px;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col ul li {
+        margin-bottom: 14px;
+      }
+      .footer-col ul a {
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.4);
+        transition: color 0.3s;
+      }
+      .footer-col ul a:hover {
+        color: var(--gold);
+      }
+      .footer-bottom {
+        background: var(--dark);
+        padding: 20px 70px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 1px;
+      }
 
-  /* HAMBURGER — hidden on desktop */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; flex-shrink: 0; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); }
+      /* FLOATING WHATSAPP */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 999;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        animation: floatWA 3s ease-in-out infinite;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.12);
+      }
+      @keyframes floatWA {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      .whatsapp-float svg {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+      }
 
-  /* MOBILE MENU */
-  .mobile-menu { position: fixed; top: 65px; left: 0; right: 0; background: rgba(4, 212, 52, 0.98); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 99; display: none; flex-direction: column; }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; padding: 16px 0; border-bottom: 1px solid var(--border); display: block; }
-  .mobile-menu a:hover { color: var(--gold); }
-  .mobile-quote-btn { background: var(--gold); color: #fff !important; text-align: center; padding: 14px !important; letter-spacing: 2px; margin-top: 12px; border-bottom: none !important; }
+      /* HAMBURGER — hidden on desktop */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 4px;
+        flex-shrink: 0;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--gold);
+      }
 
-  @media (max-width: 768px) {
-    html, body { overflow-x: hidden; width: 100%; }
-    nav { padding: 16px 20px; }
-    nav ul { display: none; }
-    .nav-btn { display: none; }
-    .hamburger { display: flex; }
-    .hero-content { padding: 0 20px; max-width: 100%; }
-    .hero-tag::before { width: 20px; }
-    .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); }
-    .hero-btns { flex-direction: column; gap: 12px; }
-    .btn-gold, .btn-outline { width: 100%; text-align: center; padding: 14px 20px; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .stat { padding: 32px 20px; }
-    .services { padding: 60px 20px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { height: 300px; }
-    .featured-header { padding: 0 20px 40px; flex-direction: column; gap: 16px; }
-    .featured-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .featured-item:first-child { grid-row: auto; grid-column: 1 / 3; height: 250px; }
-    .featured-item { height: 180px; }
-    .process { padding: 60px 20px; }
-    .process-grid { grid-template-columns: 1fr; }
-    .process-step { padding: 36px 24px; }
-    .testimonials { padding: 60px 20px; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .contact { padding: 60px 20px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-    .form-row { grid-template-columns: 1fr; }
-    .contact-socials { flex-wrap: wrap; }
-    .map-section { height: 300px; }
-    footer { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
-    .footer-bottom { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
-  }
-</style>
-</head>
-<body>
+      /* MOBILE MENU */
+      .mobile-menu {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: rgba(21, 17, 13, 0.98);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 24px;
+        z-index: 99;
+        display: none;
+        flex-direction: column;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+        display: block;
+      }
+      .mobile-menu a:hover {
+        color: var(--gold);
+      }
+      .mobile-quote-btn {
+        background: var(--gold);
+        color: #fff !important;
+        text-align: center;
+        padding: 14px !important;
+        letter-spacing: 2px;
+        margin-top: 12px;
+        border-bottom: none !important;
+      }
 
-<!-- FLOATING WHATSAPP -->
-<a class="whatsapp-float" href="https://wa.me/2347068361078?text=Hello%20Vickie's%20Interior!%20I%20am%20interested%20in%20your%20services." target="_blank">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+      @media (max-width: 768px) {
+        html,
+        body {
+          overflow-x: hidden;
+          width: 100%;
+        }
+        nav {
+          padding: 16px 20px;
+        }
+        nav ul {
+          display: none;
+        }
+        .nav-btn {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .hero-content {
+          padding: 0 20px;
+          max-width: 100%;
+        }
+        .hero-tag::before {
+          width: 20px;
+        }
+        .hero-title {
+          font-size: clamp(2.5rem, 8vw, 4rem);
+        }
+        .hero-btns {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .btn-gold,
+        .btn-outline {
+          width: 100%;
+          text-align: center;
+          padding: 14px 20px;
+        }
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stat {
+          padding: 32px 20px;
+        }
+        .services {
+          padding: 50px 16px 60px;
+        }
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        .service-card {
+          height: 190px;
+        }
+        .service-card:nth-child(3) {
+          grid-column: 1 / 3;
+          height: 130px;
+        }
+        .service-card .service-num {
+          font-size: 2.2rem;
+          margin-bottom: 2px;
+        }
+        .service-card .service-name {
+          font-size: 1rem;
+          margin-bottom: 4px;
+        }
+        .service-card .service-desc {
+          display: none;
+        } /* keeps the smaller cards clean and readable */
+        .service-card .service-overlay {
+          padding: 16px 18px;
+        }
+        .service-card .service-arrow {
+          width: 32px;
+          height: 32px;
+          top: 14px;
+          right: 14px;
+        }
 
-<!-- NAV -->
-<nav>
-  <div class="logo">Vickie's <span>Interior</span></div>
-  <ul>
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
-  <button class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+        .featured-header {
+          padding: 0 20px 28px;
+          flex-direction: column;
+          gap: 16px;
+          align-items: flex-start;
+        }
+        .featured-grid {
+          display: flex;
+          grid-template-columns: unset;
+          grid-template-rows: unset;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          gap: 12px;
+          padding: 0 20px 6px;
+          scrollbar-width: none;
+        }
+        .featured-grid::-webkit-scrollbar {
+          display: none;
+        }
+        .featured-item,
+        .featured-item:first-child {
+          grid-row: auto;
+          grid-column: auto;
+          flex: 0 0 78%;
+          scroll-snap-align: center;
+          height: 230px;
+          border-radius: 3px;
+        }
+        .featured-item .featured-label {
+          transform: translateY(0);
+        } /* no hover on touch, so always visible */
+        .featured-dots {
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 14px;
+        }
+        .featured-dots span {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(21, 17, 13, 0.15);
+          transition:
+            background 0.3s,
+            width 0.3s;
+        }
+        .featured-dots span.active {
+          background: var(--gold);
+          width: 18px;
+          border-radius: 3px;
+        }
+        .process {
+          padding: 60px 20px;
+        }
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+        .process-step {
+          padding: 36px 24px;
+        }
+        .testimonials {
+          padding: 60px 20px;
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact {
+          padding: 60px 20px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .contact-socials {
+          flex-wrap: wrap;
+        }
+        .map-section {
+          height: 300px;
+        }
+        footer {
+          grid-template-columns: 1fr;
+          padding: 40px 20px;
+          gap: 32px;
+        }
+        .footer-bottom {
+          padding: 16px 20px;
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- FLOATING WHATSAPP -->
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/2347068361078?text=Hello%20Vickie's%20Interior!%20I%20am%20interested%20in%20your%20services."
+      target="_blank"
+    >
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="gallery.html" onclick="closeMenu()">Gallery</a>
-  <a href="about.html" onclick="closeMenu()">About</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#contact" class="mobile-quote-btn" onclick="closeMenu()">Get a Quote</a>
-</div>
+    <!-- NAV -->
+    <nav>
+      <div class="logo">Vickie's <span>Interior</span></div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button
+        class="nav-btn"
+        onclick="
+          document
+            .getElementById('contact')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        Get a Quote
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-tag">Luxury Interior Design</p>
-    <h1 class="hero-title">
-      Spaces That<br>Tell Your <em>Story</em>
-    </h1>
-    <p class="hero-desc">Transforming ordinary spaces into extraordinary living experiences. Every room we touch becomes a masterpiece of comfort and elegance.</p>
-    <div class="hero-btns">
-      <button class="btn-gold" onclick="window.location.href='gallery.html'">View Our Work</button>
-      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#contact" class="mobile-quote-btn" onclick="closeMenu()"
+        >Get a Quote</a
+      >
     </div>
-  </div>
-  <div class="hero-scroll">Scroll</div>
-</section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num">8+</div>
-    <div class="stat-label">Years Experience</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">200+</div>
-    <div class="stat-label">Projects Completed</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">200+</div>
-    <div class="stat-label">Happy Clients</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">5★</div>
-    <div class="stat-label">Average Rating</div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-header">
-    <p class="section-tag">✦ What We Do</p>
-    <h2 class="section-title">Our <em>Specialties</em></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/wallart-1.jpg" alt="Living Spaces" loading="eager">
-      <div class="service-overlay">
-        <div class="service-num">01</div>
-        <h3 class="service-name">3D WALL ARTS</h3>
-        <p class="service-desc">Creating warm, inviting spaces that reflect your personality</p>
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-tag">Luxury Interior Design</p>
+        <h1 class="hero-title">Spaces That<br />Tell Your <em>Story</em></h1>
+        <p class="hero-desc">
+          Transforming ordinary spaces into extraordinary living experiences.
+          Every room we touch becomes a masterpiece of comfort and elegance.
+        </p>
+        <div class="hero-btns">
+          <button
+            class="btn-gold"
+            onclick="window.location.href = 'gallery.html'"
+          >
+            View Our Work
+          </button>
+          <button
+            class="btn-outline"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Get a Quote
+          </button>
+        </div>
       </div>
-      <div class="service-arrow">→</div>
-    </div>
-    <div class="service-card">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/living-space-1.jpg" alt="Office Design" loading="eager">
-      <div class="service-overlay">
-        <div class="service-num">02</div>
-        <h3 class="service-name">INTERIOR MAKEOVER</h3>
-        <p class="service-desc">Professional creativity to transform your space</p>
-      </div>
-      <div class="service-arrow">→</div>
-    </div>
-    <div class="service-card">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/flower-1.jpg" alt="Bedroom Design" loading="eager">
-      <div class="service-overlay">
-        <div class="service-num">03</div>
-        <h3 class="service-name"> OUTDOOR DECOR RETREATS</h3>
-        <p class="service-desc">Luxurious decorative objects for lively outdoor spaces</p>
-      </div>
-      <div class="service-arrow">→</div>
-    </div>
-  </div>
-</section>
+      <div class="hero-scroll">Scroll</div>
+    </section>
 
-<!-- FEATURED WORK -->
-<section class="featured">
-  <div class="featured-header">
-    <div>
-      <p class="section-tag">✦ Recent Work</p>
-      <h2 class="section-title">Featured <em>Projects</em></h2>
-      <div class="divider"></div>
-    </div>
-    <button class="btn-gold" onclick="window.location.href='gallery.html'">View All Work</button>
-  </div>
-  <div class="featured-grid">
-    <div class="featured-item">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-6.jpeg" alt="Featured project" loading="eager">
-      <div class="featured-label">Living Room Transformation</div>
-    </div>
-    <div class="featured-item">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-2.jpg" alt="Featured project" loading="eager">
-      <div class="featured-label">Office Space Design</div>
-    </div>
-    <div class="featured-item">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-1.jpg" alt="Featured project" loading="eager">
-      <div class="featured-label">Bedroom Suite</div>
-    </div>
-    <div class="featured-item">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/feature-3.jpg" alt="Featured project" loading="eager">
-      <div class="featured-label">Dining Area</div>
-    </div>
-    <div class="featured-item">
-      <!-- REPLACE src WITH YOUR PHOTO -->
-      <img src="images/featured-4.jpg" alt="Featured project" loading="eager">
-      <div class="featured-label">Home Accessories</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="section-header">
-    <p class="section-tag">✦ How We Work</p>
-    <h2 class="section-title" style="color:#fff">Our <em style="color:var(--gold)">Process</em></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="process-grid">
-    <div class="process-step">
-      <div class="process-num">01</div>
-      <h3 class="process-name">Consultation</h3>
-      <p class="process-desc">We listen to your vision, understand your lifestyle, and assess your space thoroughly.</p>
-    </div>
-    <div class="process-step">
-      <div class="process-num">02</div>
-      <h3 class="process-name">Design Concept</h3>
-      <p class="process-desc">Our team creates a detailed design concept tailored specifically to your taste and budget.</p>
-    </div>
-    <div class="process-step">
-      <div class="process-num">03</div>
-      <h3 class="process-name">Sourcing</h3>
-      <p class="process-desc">We source the finest furniture, accessories, and materials to bring your vision to life.</p>
-    </div>
-    <div class="process-step">
-      <div class="process-num">04</div>
-      <h3 class="process-name">Installation</h3>
-      <p class="process-desc">Professional installation and styling until every detail is absolutely perfect.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-header">
-    <p class="section-tag">✦ Client Love</p>
-    <h2 class="section-title">What Clients <em>Say</em></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Vickie completely transformed my living room. I couldn't believe it was the same space. Her eye for detail and taste is absolutely extraordinary!"</p>
-      <p class="testi-name">— Mrs. Blessing A., Uyo</p>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Our office looks like something out of a magazine. Clients always compliment it when they visit. Best investment we ever made for our business."</p>
-      <p class="testi-name">— Mr. Emeka O., Akwa Ibom</p>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Professional, creative, and delivers on time. Vickie's Interior turned my house into the dream home I always imagined. Highly recommended!"</p>
-      <p class="testi-name">— Mrs. Chidinma K., Uyo</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <p class="section-tag">✦ Get In Touch</p>
-      <h2 class="section-title" style="color:#fff">Let's Create<br>Something <em>Beautiful</em></h2>
-      <div class="divider" style="margin-bottom:40px"></div>
-      <div class="contact-detail">
-        <p class="contact-label">Location</p>
-        <p class="contact-value">80 oron Road, uyo<br>Akwa Ibom State, Nigeria</p>
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years Experience</div>
       </div>
-      <div class="contact-detail">
-        <p class="contact-label">WhatsApp</p>
-        <p class="contact-value">+234 706 836 1078</p>
+      <div class="stat">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Projects Completed</div>
       </div>
-      <div class="contact-detail">
-        <p class="contact-label">Email</p>
-        <p class="contact-value">vickiesinterior1@gmail.com</p>
+      <div class="stat">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Happy Clients</div>
       </div>
-      <div class="contact-socials">
-        <a href="https://wa.me/2347068361078" target="_blank" class="social-btn">WhatsApp</a>
-        <a href="https://www.facebook.com/profile.php?id=61590729208581" target="_blank" class="social-btn">Facebook</a>
-        <a href="https://www.instagram.com/vickiesinterior?igsh=MTJseHRibnl4bWx4Zg==" target="_blank" class="social-btn">Instagram</a>
+      <div class="stat">
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Average Rating</div>
       </div>
     </div>
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Your Full Name" required>
-        <input type="tel" name="phone" placeholder="Phone / WhatsApp" required>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="section-header">
+        <p class="section-tag">✦ What We Do</p>
+        <h2 class="section-title">Our <em>Specialties</em></h2>
+        <div class="divider"></div>
       </div>
-      <input type="email" name="email" placeholder="Email Address">
-      <select name="service">
-        <option value="" disabled selected>What service do you need?</option>
-        <option>Living Room Design</option>
-        <option>Bedroom Design</option>
-        <option>Office Design</option>
-        <option>Full Home Decoration</option>
-        <option>Furniture & Accessories</option>
-        <option>General Enquiry</option>
-      </select>
-      <textarea name="message" placeholder="Tell us about your space and vision..."></textarea>
-      <button type="submit" class="contact-submit">Send Enquiry</button>
-    </form>
-  </div>
-</section>
+      <div class="services-grid" id="servicesGrid">
+        <div class="service-card">
+          <img src="images/wallart-1.jpg" alt="Living Spaces" loading="lazy" />
+          <div class="service-overlay">
+            <div class="service-num">01</div>
+            <h3 class="service-name">3D WALL ARTS</h3>
+            <p class="service-desc">
+              Creating warm, inviting spaces that reflect your personality
+            </p>
+          </div>
+          <div class="service-arrow">→</div>
+        </div>
+        <div class="service-card">
+          <img
+            src="images/living-space-1.jpg"
+            alt="Office Design"
+            loading="lazy"
+          />
+          <div class="service-overlay">
+            <div class="service-num">02</div>
+            <h3 class="service-name">INTERIOR MAKEOVER</h3>
+            <p class="service-desc">
+              Professional creativity to transform your space
+            </p>
+          </div>
+          <div class="service-arrow">→</div>
+        </div>
+        <div class="service-card">
+          <img src="images/flower-1.jpg" alt="Bedroom Design" loading="lazy" />
+          <div class="service-overlay">
+            <div class="service-num">03</div>
+            <h3 class="service-name">OUTDOOR DECOR RETREATS</h3>
+            <p class="service-desc">
+              Luxurious decorative objects for lively outdoor spaces
+            </p>
+          </div>
+          <div class="service-arrow">→</div>
+        </div>
+      </div>
+    </section>
 
-<!-- MAP -->
-<div class="map-section">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.51877649214!2d7.9331166701405005!3d5.019254183812227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105d57e77c0aaa8b%3A0xc5377a8237de95ef!2s80%20Uyo-Oron%20Rd%2C%20Uyo%20520102%2C%20Akwa%20Ibom!5e0!3m2!1sen!2sng!4v1780390022462!5m2!1sen!2sng" allowfullscreen="" loading="lazy"></iframe>
-</div>
+    <!-- FEATURED WORK -->
+    <section class="featured">
+      <div class="featured-header">
+        <div>
+          <p class="section-tag">✦ Recent Work</p>
+          <h2 class="section-title">Featured <em>Projects</em></h2>
+          <div class="divider"></div>
+        </div>
+        <button
+          class="btn-gold"
+          onclick="window.location.href = 'gallery.html'"
+        >
+          View All Work
+        </button>
+      </div>
+      <div class="featured-grid" id="featuredGrid">
+        <div class="featured-item">
+          <img
+            src="images/featured-6.jpeg"
+            alt="Featured project"
+            loading="lazy"
+          />
+          <div class="featured-label">Living Room Transformation</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="images/featured-2.jpg"
+            alt="Featured project"
+            loading="lazy"
+          />
+          <div class="featured-label">Office Space Design</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="images/featured-1.jpg"
+            alt="Featured project"
+            loading="lazy"
+          />
+          <div class="featured-label">Bedroom Suite</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="images/feature-3.jpg"
+            alt="Featured project"
+            loading="lazy"
+          />
+          <div class="featured-label">Dining Area</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="images/featured-4.jpg"
+            alt="Featured project"
+            loading="lazy"
+          />
+          <div class="featured-label">Home Accessories</div>
+        </div>
+      </div>
+      <div class="featured-dots" id="featuredDots"></div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-logo">Vickie's <span>Interior</span></div>
-    <p class="footer-desc">Transforming spaces into beautiful, functional environments that reflect your unique personality and style.</p>
-  </div>
-  <div class="footer-col">
-    <h4>Pages</h4>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Services</h4>
-    <ul>
-      <li><a href="#">Living Room</a></li>
-      <li><a href="#">Bedroom Design</a></li>
-      <li><a href="#">Office Design</a></li>
-      <li><a href="#">Accessories</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-bottom">
-  <span>© 2026 Vickie's Interior. All rights reserved.</span>
-  <span>Built with ❤️ in Akwa Ibom</span>
-</div>
+    <!-- PROCESS -->
+    <section class="process">
+      <div class="section-header">
+        <p class="section-tag">✦ How We Work</p>
+        <h2 class="section-title" style="color: #fff">
+          Our <em style="color: var(--gold)">Process</em>
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3 class="process-name">Consultation</h3>
+          <p class="process-desc">
+            We listen to your vision, understand your lifestyle, and assess your
+            space thoroughly.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3 class="process-name">Design Concept</h3>
+          <p class="process-desc">
+            Our team creates a detailed design concept tailored specifically to
+            your taste and budget.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3 class="process-name">Sourcing</h3>
+          <p class="process-desc">
+            We source the finest furniture, accessories, and materials to bring
+            your vision to life.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h3 class="process-name">Installation</h3>
+          <p class="process-desc">
+            Professional installation and styling until every detail is
+            absolutely perfect.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
-</script>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <div class="section-header">
+        <p class="section-tag">✦ Client Love</p>
+        <h2 class="section-title" style="color: #fff">
+          What Clients <em>Say</em>
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">
+            "Vickie completely transformed my living room. I couldn't believe it
+            was the same space. Her eye for detail and taste is absolutely
+            extraordinary!"
+          </p>
+          <p class="testi-name">— Mrs. Blessing A., Uyo</p>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">
+            "Our office looks like something out of a magazine. Clients always
+            compliment it when they visit. Best investment we ever made for our
+            business."
+          </p>
+          <p class="testi-name">— Mr. Emeka O., Akwa Ibom</p>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">
+            "Professional, creative, and delivers on time. Vickie's Interior
+            turned my house into the dream home I always imagined. Highly
+            recommended!"
+          </p>
+          <p class="testi-name">— Mrs. Chidinma K., Uyo</p>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-tag">✦ Get In Touch</p>
+          <h2 class="section-title" style="color: #fff">
+            Let's Create<br />Something <em>Beautiful</em>
+          </h2>
+          <div class="divider" style="margin-bottom: 40px"></div>
+          <div class="contact-detail">
+            <p class="contact-label">Location</p>
+            <p class="contact-value">
+              80 Oron Rd, Uyo<br />Akwa Ibom State, Nigeria
+            </p>
+          </div>
+          <div class="contact-detail">
+            <p class="contact-label">WhatsApp</p>
+            <p class="contact-value">+234 706 836 1078</p>
+          </div>
+          <div class="contact-detail">
+            <p class="contact-label">Email</p>
+            <p class="contact-value">vickiesinterior1@gmail.com</p>
+          </div>
+          <div class="contact-socials">
+            <a
+              href="https://wa.me/2347068361078"
+              target="_blank"
+              class="social-btn"
+              >WhatsApp</a
+            >
+            <a
+              href="https://www.facebook.com/profile.php?id=61590729208581"
+              target="_blank"
+              class="social-btn"
+              >Facebook</a
+            >
+            <a
+              href="https://www.instagram.com/vickiesinterior?igsh=MTJseHRibnl4bWx4Zg=="
+              target="_blank"
+              class="social-btn"
+              >Instagram</a
+            >
+          </div>
+        </div>
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+          method="POST"
+        >
+          <div class="form-row">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Full Name"
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone / WhatsApp"
+              required
+            />
+          </div>
+          <input type="email" name="email" placeholder="Email Address" />
+          <select name="service">
+            <option value="" disabled selected>
+              What service do you need?
+            </option>
+            <option>Living Room Design</option>
+            <option>Bedroom Design</option>
+            <option>Office Design</option>
+            <option>Full Home Decoration</option>
+            <option>Furniture & Accessories</option>
+            <option>General Enquiry</option>
+          </select>
+          <textarea
+            name="message"
+            placeholder="Tell us about your space and vision..."
+          ></textarea>
+          <button type="submit" class="contact-submit">Send Enquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <div class="map-section">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.51877649214!2d7.9331166701405005!3d5.019254183812227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105d57e77c0aaa8b%3A0xc5377a8237de95ef!2s80%20Uyo-Oron%20Rd%2C%20Uyo%20520102%2C%20Akwa%20Ibom!5e0!3m2!1sen!2sng!4v1780390022462!5m2!1sen!2sng"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <div class="footer-logo">Vickie's <span>Interior</span></div>
+        <p class="footer-desc">
+          Transforming spaces into beautiful, functional environments that
+          reflect your unique personality and style.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Living Room</a></li>
+          <li><a href="#">Bedroom Design</a></li>
+          <li><a href="#">Office Design</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <span>© 2026 Vickie's Interior. All rights reserved.</span>
+      <span>Built with ❤️ in Akwa Ibom</span>
+    </div>
+
+    <!-- THREE.JS — hero parallax scene -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      (function initHeroScene() {
+        const canvas = document.getElementById("hero-canvas");
+        const heroSection = document.querySelector(".hero");
+        if (!canvas || typeof THREE === "undefined") return; // fails gracefully to the CSS gradient background
+
+        const isTouch = window.matchMedia("(pointer: coarse)").matches;
+        const width = () => heroSection.clientWidth;
+        const height = () => heroSection.clientHeight;
+
+        const renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: true,
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(width(), height());
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          45,
+          width() / height(),
+          0.1,
+          100,
+        );
+        camera.position.z = 10;
+
+        // ---- background photo plane ----
+        const loader = new THREE.TextureLoader();
+        const photoGeo = new THREE.PlaneGeometry(16, 9);
+        const photoMat = new THREE.MeshBasicMaterial({ color: 0x1c1712 });
+        const photoPlane = new THREE.Mesh(photoGeo, photoMat);
+        photoPlane.position.z = 0;
+        scene.add(photoPlane);
+
+        function fitCover(texture) {
+          const imgAspect = texture.image.width / texture.image.height;
+          const boxAspect = width() / height();
+          if (imgAspect > boxAspect) {
+            texture.repeat.set(boxAspect / imgAspect, 1);
+            texture.offset.set((1 - boxAspect / imgAspect) / 2, 0);
+          } else {
+            texture.repeat.set(1, imgAspect / boxAspect);
+            texture.offset.set(0, (1 - imgAspect / boxAspect) / 2);
+          }
+        }
+
+        let heroTexture = null;
+        loader.load("images/living-space-1.jpg", (texture) => {
+          texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+          fitCover(texture);
+          photoMat.map = texture;
+          photoMat.color.set(0xffffff);
+          photoMat.needsUpdate = true;
+          heroTexture = texture;
+        });
+
+        // scale the plane to always fill the camera frustum at z=0
+        function fitPlaneToViewport() {
+          const dist = camera.position.z - photoPlane.position.z;
+          const vFov = (camera.fov * Math.PI) / 180;
+          const planeHeight = 2 * Math.tan(vFov / 2) * dist;
+          const planeWidth = planeHeight * (width() / height());
+          photoPlane.scale.set(planeWidth / 16, planeHeight / 9, 1);
+        }
+
+        // ---- floating gold particles (adds the "depth" layer in front of the photo) ----
+        const PARTICLE_COUNT = isTouch ? 30 : 55;
+        const particleGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(PARTICLE_COUNT * 3);
+        const speeds = new Float32Array(PARTICLE_COUNT);
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          positions[i * 3] = (Math.random() - 0.5) * 14;
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+          positions[i * 3 + 2] = Math.random() * 4 + 1; // in front of the photo plane
+          speeds[i] = 0.1 + Math.random() * 0.25;
+        }
+        particleGeo.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3),
+        );
+
+        // soft round sprite drawn on a small canvas, used as the particle texture
+        const spriteCanvas = document.createElement("canvas");
+        spriteCanvas.width = spriteCanvas.height = 64;
+        const ctx = spriteCanvas.getContext("2d");
+        const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+        grad.addColorStop(0, "rgba(232,201,122,0.9)");
+        grad.addColorStop(1, "rgba(232,201,122,0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 64, 64);
+        const spriteTexture = new THREE.CanvasTexture(spriteCanvas);
+
+        const particleMat = new THREE.PointsMaterial({
+          size: 0.22,
+          map: spriteTexture,
+          transparent: true,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+        });
+        const particles = new THREE.Points(particleGeo, particleMat);
+        scene.add(particles);
+
+        // ---- parallax on mouse move + gentle idle drift ----
+        let targetX = 0,
+          targetY = 0,
+          curX = 0,
+          curY = 0;
+        let idleT = 0;
+
+        if (!isTouch) {
+          heroSection.addEventListener("mousemove", (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+            targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+          });
+        }
+
+        function resize() {
+          camera.aspect = width() / height();
+          camera.updateProjectionMatrix();
+          renderer.setSize(width(), height());
+          fitPlaneToViewport();
+          if (photoMat.map) fitCover(photoMat.map);
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        function animate() {
+          requestAnimationFrame(animate);
+          idleT += 0.004;
+
+          curX += (targetX - curX) * 0.04;
+          curY += (targetY - curY) * 0.04;
+
+          const idleX = Math.sin(idleT) * 0.15;
+          const idleY = Math.cos(idleT * 0.8) * 0.1;
+
+          camera.position.x = curX * 0.4 + idleX;
+          camera.position.y = -curY * 0.3 + idleY;
+          camera.lookAt(0, 0, 0);
+
+          // Ken Burns pan: a tall/narrow screen only ever shows a thin vertical
+          // slice of a landscape photo. Slowly panning the crop left-right (and
+          // slightly up-down) reveals the whole photo over time instead of leaving
+          // it frozen on one centered crop. Runs whenever there's meaningful crop
+          // room (slack) — not gated to touch devices, since desktop responsive
+          // views and Firefox's device toolbar don't always report as touch.
+          if (heroTexture) {
+            const slackX = 1 - heroTexture.repeat.x;
+            const slackY = 1 - heroTexture.repeat.y;
+            if (slackX > 0.001)
+              heroTexture.offset.x =
+                slackX * (0.5 + 0.5 * Math.sin(idleT * 1.6));
+            if (slackY > 0.001)
+              heroTexture.offset.y =
+                slackY * (0.5 + 0.5 * Math.sin(idleT * 1.3 + 1));
+          }
+
+          // drift particles slowly upward, loop back to bottom
+          const posAttr = particleGeo.attributes.position;
+          for (let i = 0; i < PARTICLE_COUNT; i++) {
+            let y = posAttr.getY(i) + speeds[i] * 0.008;
+            if (y > 4.5) y = -4.5;
+            posAttr.setY(i, y);
+          }
+          posAttr.needsUpdate = true;
+
+          renderer.render(scene, camera);
+        }
+        animate();
+      })();
+    </script>
+
+    <!-- 3D TILT ON HOVER — service cards + featured projects -->
+    <script>
+      function attach3DTilt(selector, maxTilt) {
+        document.querySelectorAll(selector).forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(1200px) rotateX(${-y * maxTilt}deg) rotateY(${x * maxTilt}deg) scale3d(1.02,1.02,1.02)`;
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform =
+              "perspective(1200px) rotateX(0) rotateY(0) scale3d(1,1,1)";
+          });
+        });
+      }
+      attach3DTilt(".service-card", 6);
+      attach3DTilt(".featured-item", 5);
+
+      // Dots indicator for the mobile swipeable Featured Projects carousel
+      (function setupFeaturedDots() {
+        const grid = document.getElementById("featuredGrid");
+        const dotsWrap = document.getElementById("featuredDots");
+        if (!grid || !dotsWrap) return;
+        const items = grid.querySelectorAll(".featured-item");
+        items.forEach((_, i) => {
+          const dot = document.createElement("span");
+          if (i === 0) dot.classList.add("active");
+          dotsWrap.appendChild(dot);
+        });
+        let ticking = false;
+        grid.addEventListener("scroll", () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            const itemWidth = items[0].getBoundingClientRect().width + 12; // + gap
+            const idx = Math.round(grid.scrollLeft / itemWidth);
+            dotsWrap
+              .querySelectorAll("span")
+              .forEach((d, i) => d.classList.toggle("active", i === idx));
+            ticking = false;
+          });
+        });
+      })();
+
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("open");
+      }
+      function closeMenu() {
+        document.getElementById("mobileMenu").classList.remove("open");
+      }
+    </script>
+  </body>
 </html>
